@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Dashboard Overview - The Editorial</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#54647a",
+                      "tertiary-fixed-dim": "#ffb596",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed": "#00174b",
+                      "secondary-fixed": "#d3e4fe",
+                      "inverse-primary": "#b4c5ff",
+                      "on-error": "#ffffff",
+                      "secondary-container": "#d0e1fb",
+                      "error": "#ba1a1a",
+                      "secondary": "#505f76",
+                      "on-tertiary-container": "#ffede6",
+                      "surface-container-highest": "#e1e2ed",
+                      "error-container": "#ffdad6",
+                      "surface-bright": "#faf8ff",
+                      "primary-fixed": "#dbe1ff",
+                      "on-secondary-fixed": "#0b1c30",
+                      "on-surface": "#191b23",
+                      "on-primary": "#ffffff",
+                      "tertiary": "#943700",
+                      "inverse-on-surface": "#f0f0fb",
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "surface-dim": "#d9d9e5",
+                      "background": "#faf8ff",
+                      "on-tertiary-fixed": "#360f00",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "surface-tint": "#0053db",
+                      "surface-container-high": "#e7e7f3",
+                      "outline": "#737686",
+                      "on-background": "#191b23",
+                      "outline-variant": "#c3c6d7",
+                      "primary-container": "#2563eb",
+                      "primary": "#004ac6",
+                      "on-primary-container": "#eeefff",
+                      "surface-container": "#ededf9",
+                      "on-error-container": "#93000a",
+                      "tertiary-container": "#bc4800",
+                      "surface": "#faf8ff",
+                      "surface-variant": "#e1e2ed",
+                      "tertiary-fixed": "#ffdbcd",
+                      "surface-container-low": "#f3f3fe",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-surface": "#2e3039",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "on-surface-variant": "#434655",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed-dim": "#b4c5ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit-md": "16px",
+                      "article-max-width": "700px",
+                      "container-max-width": "1200px",
+                      "unit-lg": "24px",
+                      "section-padding-mobile": "40px",
+                      "unit-xl": "32px",
+                      "section-padding-desktop": "80px",
+                      "gutter": "24px",
+                      "unit-xs": "4px",
+                      "unit-sm": "8px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "\"Source Serif 4\""
+                      ],
+                      "ui-label": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "\"Source Serif 4\""
+                      ],
+                      "display-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "caption": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "display-lg-mobile": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-sm": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "20px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "ui-label": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "30px",
+                              {
+                                      "lineHeight": "38px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      }
+              },
+          },
+        }
+      </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex antialiased">
+<!-- SideNavBar (Shared Component) -->
+<nav class="bg-surface-container docked left-0 h-full w-64 border-r border-outline-variant flat no shadows fixed left-0 top-0 h-full flex flex-col p-unit-md z-40 hidden md:flex">
+<!-- Brand/User Header -->
+<div class="mb-unit-xl flex items-center gap-unit-sm px-unit-sm">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A small, professional headshot of an administrative user in a clean, minimalist editorial environment. High-key lighting, bright studio setting, neutral expression. The image is cropped in a perfect circle, exuding a modern, trustworthy, and authoritative digital presence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKpNjwuhZyI92sNN7DXtR6RIhTuZeg-vm9r4dgRJ2mxvr0425IEMWwPb3L-o1qYSDlXnP5bzbD_fsWi2QrgGmvka28Je5HqtTtW3q1Dr1yhtZvrSHRbFj6_qRNGW74RqKWyFsYaO7cZF-LPhK3Sd6HuYzTK5bYXquTD4AuZwG7DlhDBCWZd9BJ0pURRHHizMAI3g6wg7tcgCQ3N1zN29QP8jHJWbSIoI6jCvi0fuSXxs1WLSNHe4SmSA"/>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-on-surface leading-none mb-1">Admin Panel</h1>
+<p class="font-caption text-caption text-on-surface-variant">Editor Access</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<ul class="flex flex-col gap-unit-xs font-ui-label text-ui-label flex-grow">
+<!-- Active Tab -->
+<li>
+<a class="flex items-center gap-unit-sm py-2 px-unit-sm text-primary font-bold bg-secondary-fixed rounded-lg scale-95 transition-transform w-full" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<!-- Inactive Tabs -->
+<li>
+<a class="flex items-center gap-unit-sm py-2 px-unit-sm text-on-surface-variant hover:bg-secondary-container transition-colors rounded-lg scale-95 active:scale-90 transition-transform w-full" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="article">article</span>
+                    Posts
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-unit-sm py-2 px-unit-sm text-on-surface-variant hover:bg-secondary-container transition-colors rounded-lg scale-95 active:scale-90 transition-transform w-full" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="category">category</span>
+                    Categories
+                </a>
+</li>
+<li class="mt-auto">
+<a class="flex items-center gap-unit-sm py-2 px-unit-sm text-on-surface-variant hover:bg-secondary-container transition-colors rounded-lg scale-95 active:scale-90 transition-transform w-full" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="add_box">add_box</span>
+                    Create Post
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-unit-sm py-2 px-unit-sm text-on-surface-variant hover:bg-secondary-container transition-colors rounded-lg scale-95 active:scale-90 transition-transform w-full" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="logout">logout</span>
+                    Logout
+                </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full md:pl-64 min-h-screen bg-background">
+<!-- TopAppBar (Dashboard Context) -->
+<header class="bg-surface border-b border-outline-variant flat no shadows flex justify-between items-center w-full px-unit-lg h-16 sticky top-0 z-30">
+<h2 class="font-headline-sm text-headline-sm text-on-surface md:hidden">Admin Panel</h2>
+<div class="hidden md:block"></div> <!-- Spacer for flex-between on desktop -->
+<div class="flex items-center gap-unit-md text-on-surface-variant">
+<span class="material-symbols-outlined cursor-pointer hover:text-primary transition-colors" data-icon="notifications">notifications</span>
+<img class="w-8 h-8 rounded-full object-cover cursor-pointer" data-alt="A very small, precise circular profile avatar icon of a generic user in a clean, minimalist web environment. Sharp focus, high contrast, minimal background noise. Designed to represent a user account toggle in a modern digital dashboard interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANmIfnv0IYH0G8im7kTt7sApY30cgAbDx2LGGznYnCsgQJashhvW6ItXnok12h8czaPeiMd1Oa-B6Frq5TFhnYclOJFMP05sRTQRPzEeklYabj3pysKjG5t3uBvMdnLeTY3fzJHjHQM9Hqz6iFLFiMsjIZ2YKTYnGiSx3yFVjMb4u3l5MBKnLY8jQj9SZg13MVos0TzyFLqXy3lbjTKD-KGsN59xzxp1CALvpJ7K_SmUBtN8362bP0jQ"/>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-unit-lg md:p-unit-xl max-w-container-max-width mx-auto space-y-unit-xl">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-unit-md border-b border-outline-variant pb-unit-md">
+<div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-2">Dashboard Overview</h1>
+<p class="text-on-surface-variant font-body-md">A high-level view of your editorial content.</p>
+</div>
+<div class="flex gap-unit-sm">
+<button class="bg-surface border border-outline-variant text-on-surface font-ui-label text-ui-label px-6 py-3 rounded hover:bg-surface-variant transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">category</span>
+                        Manage Categories
+                    </button>
+<button class="bg-primary-container text-on-primary-container font-ui-label text-ui-label px-6 py-3 rounded hover:opacity-90 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        Create New Post
+                    </button>
+</div>
+</div>
+<!-- Stats Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-unit-lg">
+<!-- Stat Card 1 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-unit-lg flex flex-col justify-between items-start hover:border-primary transition-colors cursor-default">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-primary mb-4">
+<span class="material-symbols-outlined">article</span>
+</div>
+<div>
+<p class="font-ui-label text-ui-label text-on-surface-variant mb-1">Total Posts</p>
+<p class="font-display-lg text-display-lg text-on-surface leading-none">24</p>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-unit-lg flex flex-col justify-between items-start hover:border-primary transition-colors cursor-default">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface mb-4">
+<span class="material-symbols-outlined">published_with_changes</span>
+</div>
+<div>
+<p class="font-ui-label text-ui-label text-on-surface-variant mb-1">Published</p>
+<p class="font-display-lg text-display-lg text-on-surface leading-none">18</p>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-unit-lg flex flex-col justify-between items-start hover:border-primary transition-colors cursor-default">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface mb-4">
+<span class="material-symbols-outlined">draft</span>
+</div>
+<div>
+<p class="font-ui-label text-ui-label text-on-surface-variant mb-1">Drafts</p>
+<p class="font-display-lg text-display-lg text-on-surface leading-none">6</p>
+</div>
+</div>
+<!-- Stat Card 4 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-unit-lg flex flex-col justify-between items-start hover:border-primary transition-colors cursor-default">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface mb-4">
+<span class="material-symbols-outlined">style</span>
+</div>
+<div>
+<p class="font-ui-label text-ui-label text-on-surface-variant mb-1">Total Categories</p>
+<p class="font-display-lg text-display-lg text-on-surface leading-none">5</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

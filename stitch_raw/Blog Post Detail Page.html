@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Editorial - Blog Post</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Source+Serif+4:opsz,wght@8..60,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#54647a",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#00174b",
+                        "secondary-fixed": "#d3e4fe",
+                        "inverse-primary": "#b4c5ff",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#d0e1fb",
+                        "error": "#ba1a1a",
+                        "secondary": "#505f76",
+                        "on-tertiary-container": "#ffede6",
+                        "surface-container-highest": "#e1e2ed",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#faf8ff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-surface": "#191b23",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#943700",
+                        "inverse-on-surface": "#f0f0fb",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "surface-dim": "#d9d9e5",
+                        "background": "#faf8ff",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "surface-tint": "#0053db",
+                        "surface-container-high": "#e7e7f3",
+                        "outline": "#737686",
+                        "on-background": "#191b23",
+                        "outline-variant": "#c3c6d7",
+                        "primary-container": "#2563eb",
+                        "primary": "#004ac6",
+                        "on-primary-container": "#eeefff",
+                        "surface-container": "#ededf9",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#bc4800",
+                        "surface": "#faf8ff",
+                        "surface-variant": "#e1e2ed",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface-container-low": "#f3f3fe",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2e3039",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-surface-variant": "#434655",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#b4c5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit-md": "16px",
+                        "article-max-width": "700px",
+                        "container-max-width": "1200px",
+                        "unit-lg": "24px",
+                        "section-padding-mobile": "40px",
+                        "unit-xl": "32px",
+                        "section-padding-desktop": "80px",
+                        "gutter": "24px",
+                        "unit-xs": "4px",
+                        "unit-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["\"Source Serif 4\""],
+                        "ui-label": ["Plus Jakarta Sans"],
+                        "body-md": ["\"Source Serif 4\""],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "caption": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["20px", { "lineHeight": "32px", "fontWeight": "400" }],
+                        "ui-label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "body-md": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-md": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Base typography settings */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Reading progress bar */
+        #progress-bar {
+            transform-origin: 0% 50%;
+            transform: scaleX(0);
+            transition: transform 0.1s ease-out;
+        }
+        
+        /* Article content styling for consistent typography */
+        .article-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .article-content h2 {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: 30px;
+            line-height: 38px;
+            letter-spacing: -0.01em;
+            font-weight: 700;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            color: #191b23; /* on-surface */
+        }
+        
+        .article-content h3 {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: 24px;
+            line-height: 32px;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #191b23; /* on-surface */
+        }
+        
+        .article-content blockquote {
+            border-left: 4px solid #004ac6; /* primary */
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: #434655; /* on-surface-variant */
+        }
+        
+        .article-content a {
+            color: #004ac6; /* primary */
+            text-decoration: underline;
+            text-decoration-color: #dbe1ff; /* primary-fixed */
+            text-decoration-thickness: 2px;
+            text-underline-offset: 4px;
+            transition: all 0.2s ease;
+        }
+        
+        .article-content a:hover {
+            text-decoration-color: #004ac6;
+            background-color: #f3f3fe; /* surface-container-low */
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col relative">
+<!-- Progress Indicator -->
+<div class="fixed top-0 left-0 w-full h-1 bg-primary z-50" id="progress-bar"></div>
+<!-- TopNavBar Component -->
+<header class="bg-background dark:bg-background text-primary dark:text-primary-fixed-dim font-display-lg text-display-lg border-b border-outline-variant dark:border-outline docked full-width top-0 transition-all duration-200 ease-in-out sticky z-40">
+<div class="flex justify-between items-center w-full px-unit-lg max-w-container-max-width mx-auto h-20">
+<!-- Brand Logo -->
+<a class="font-display-lg text-display-lg font-extrabold text-on-background dark:text-surface-bright tracking-tight" href="#">
+                The Editorial
+            </a>
+<!-- Navigation Links (Desktop) -->
+<nav class="hidden md:flex items-center gap-unit-lg">
+<a class="font-ui-label text-ui-label text-on-surface-variant dark:text-on-secondary-container hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">Home</a>
+<!-- Active State Example -->
+<a class="font-ui-label text-ui-label text-primary dark:text-primary-fixed border-b-2 border-primary pb-1 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">Blog</a>
+<a class="font-ui-label text-ui-label text-on-surface-variant dark:text-on-secondary-container hover:text-primary dark:hover:text-primary-fixed-dim transition-colors" href="#">Categories</a>
+</nav>
+<!-- Secondary Action -->
+<div class="flex items-center gap-4">
+<button aria-label="Search" class="font-ui-label text-ui-label text-on-surface hover:text-primary transition-colors flex items-center gap-2">
+                    Search
+                    <span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 0;">search</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow pb-section-padding-desktop">
+<!-- Article Header Container (1200px max) -->
+<div class="max-w-container-max-width mx-auto px-gutter pt-section-padding-mobile md:pt-section-padding-desktop pb-unit-lg">
+<!-- Inner Reading Column for Header -->
+<div class="max-w-article-max-width mx-auto text-center flex flex-col items-center">
+<!-- Category Chip -->
+<span class="bg-surface-container-high text-on-surface-variant font-ui-label text-ui-label px-3 py-1 rounded-DEFAULT mb-6 inline-block">
+                    Design Systems
+                </span>
+<!-- Title -->
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-6 leading-tight">
+                    The Architecture of Clarity: Building Minimalist Editorial Interfaces
+                </h1>
+<!-- Excerpt / Subtitle -->
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-2xl">
+                    Exploring the intersection of typography, whitespace, and tonal depth in modern long-form reading experiences. How constraint breeds focus.
+                </p>
+<!-- Meta Info -->
+<div class="flex items-center gap-4 text-on-surface-variant font-caption text-caption">
+<div class="flex items-center gap-2">
+<img class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A small circular portrait photograph of a professional designer wearing a dark turtleneck against a neutral background. The lighting is soft and studio-quality, emphasizing a modern, editorial aesthetic consistent with a high-end publication. The tone is serious and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIir1lhgv5sgmiZjTOwaBnICGnxSgvJoJ46v_TuixoOGKRtWJ3G52jec1I7JxTzbAvoaOLrfiAPMq-EU4xV_31_DqT6go3y1nycpH3LUD_fKjppe1VzW2g3h4OwuUw3_Lyyf7MN7keCu3Y5B0_aVv2cfPCiUDpUJtHZdVgjwU2vLyhHDz8lPu-8bbBU9ah9zhDk4aw0amVIvTDQgIFKJWOf1dQjufsFGPtJNzmKY6UpFGdswNM0odOJQ"/>
+<span class="font-medium text-on-surface">By Elena Rostova</span>
+</div>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>Published October 24, 2024</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span>8 min read</span>
+</div>
+</div>
+</div>
+<!-- Hero Image (Full width of container, not article width) -->
+<div class="w-full max-w-container-max-width mx-auto px-4 md:px-gutter mb-section-padding-mobile md:mb-section-padding-desktop">
+<div class="w-full aspect-video rounded-xl overflow-hidden border border-outline-variant bg-surface-container-low relative">
+<img class="w-full h-full object-cover" data-alt="A striking digital installation art piece featuring glowing, generative geometric shapes suspended in a vast, minimalist gallery space. The room is illuminated by high-key, soft white lighting that creates a bright, modern light-mode aesthetic. The artwork relies on a sophisticated palette of deep blacks and pristine whites, punctuated by intense accents of vibrant blue. The mood is serene yet technologically advanced." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFqL6weC1iYrOC2PNXDe5KxcKftPspz05mTAfdf3IjmW6CazHk41YJKRF_PGZ49w0GaxLSYBx0YwyjZ1jk0H9MDLnPK65RFpInmUCFS6C0s5SE85Dy8w1DnzxH1XBuujgv9Hq4sHkzpZW2c_dfQnk7V-Z9Gkwg8_VJm4yVkNh98rrT5rzi9kSXiTVRHM4-es7yxkZN2c_LzL5ps02iXLS3U_q32jvFUKIakPo6uHmweYGDoF2bCQkoeQ"/>
+</div>
+</div>
+<!-- Article Content (Strict 700px width) -->
+<article class="max-w-article-max-width mx-auto px-gutter font-body-lg text-body-lg text-on-surface article-content">
+<p class="lead text-xl text-on-surface-variant mb-8 first-letter:text-5xl first-letter:font-display-lg first-letter:text-on-surface first-letter:mr-1 first-letter:float-left">
+                Design systems tailored for editorial content operate on a fundamentally different premise than those built for dense web applications or e-commerce platforms. Where a dashboard prioritizes data density and transactional efficiency, an editorial interface must prioritize one fragile metric above all others: reading comprehension.
+            </p>
+<p>
+                The modern digital reading experience is often fraught with friction. Pop-ups, intrusive navigation elements, high-contrast structural borders, and aggressive shadow rendering all compete for the ocular resources required to parse complex sentences. By stripping away these elements, we don't just create a "cleaner" aesthetic; we actively lower the cognitive load required to consume the content.
+            </p>
+<h2>The Role of the Reading Column</h2>
+<p>
+                The cornerstone of typographic readability on the web is the line length, often referred to as the measure. Optimal line lengths for continuous reading typically fall between 45 and 75 characters. When lines are too short, the eye must track back and forth too frequently, breaking the rhythm of reading. When lines are too long, the eye struggles to find the beginning of the next line, leading to "doubling" (reading the same line twice).
+            </p>
+<p>
+                This is why our architectural standard dictates a strict maximum width for the primary content column—usually capping around 700 pixels. This dimension, paired with a robust serif typeface scaled appropriately for high-resolution displays, naturally enforces an optimal character count per line regardless of the overarching viewport width.
+            </p>
+<blockquote>
+                "The interface should exist merely as a silent vessel for the words. The moment the container draws attention to itself, it has failed its primary directive."
+            </blockquote>
+<h3>Tonal Depth over Shadow</h3>
+<p>
+                In an editorial context, depth should be communicated through subtlety. The heavy drop shadows prevalent in application design can feel overly dramatic and distracting when applied around text blocks. Instead, we rely on tonal shifts within a restrained palette.
+            </p>
+<p>
+                Consider the relationship between the "paper" (the central reading column) and the "desk" (the background viewport). By applying a crisp, clean white to the reading surface and a subtle, cool grey (like Slate-50) to the background, we establish hierarchy and separation without the need for high-contrast outlines or blurred shadow projections. This approach feels more sophisticated, akin to high-quality print production.
+            </p>
+<h2>Interactive Elements in a Static Context</h2>
+<p>
+                Even within a reading-focused environment, interactivity is required for navigation, sharing, and contextual exploration. The challenge is integrating these elements without disrupting the reading flow.
+            </p>
+<ul>
+<li class="mb-2"><strong>Hyperlinks:</strong> Must be easily identifiable but should not overpower the surrounding text. A subtle underline, perhaps transitioning to a primary color on hover, provides sufficient affordance.</li>
+<li class="mb-2"><strong>Buttons:</strong> Should be reserved for primary actions (e.g., "Subscribe," "Share"). Secondary actions should utilize outlined or ghost styles to reduce visual weight.</li>
+<li class="mb-2"><strong>Image Captions:</strong> Placed in a distinct sans-serif typeface, scaled down, to clearly differentiate meta-information from primary narrative content.</li>
+</ul>
+<p>
+                Ultimately, minimalist editorial design is an exercise in restraint. It requires the designer to continuously ask: <em>Is this element strictly necessary for the communication of the core message?</em> If the answer is no, the element must be removed. The result is a distilled, authoritative environment where the words are finally allowed to speak for themselves.
+            </p>
+<!-- Tags/Topics at bottom of article -->
+<div class="mt-12 pt-8 border-t border-outline-variant flex flex-wrap gap-2">
+<span class="bg-surface-container-low text-on-surface-variant font-ui-label text-ui-label px-3 py-1 rounded-DEFAULT hover:bg-surface-container-high cursor-pointer transition-colors">Design Systems</span>
+<span class="bg-surface-container-low text-on-surface-variant font-ui-label text-ui-label px-3 py-1 rounded-DEFAULT hover:bg-surface-container-high cursor-pointer transition-colors">Typography</span>
+<span class="bg-surface-container-low text-on-surface-variant font-ui-label text-ui-label px-3 py-1 rounded-DEFAULT hover:bg-surface-container-high cursor-pointer transition-colors">UX</span>
+<span class="bg-surface-container-low text-on-surface-variant font-ui-label text-ui-label px-3 py-1 rounded-DEFAULT hover:bg-surface-container-high cursor-pointer transition-colors">Minimalism</span>
+</div>
+</article>
+<!-- Related Posts Section (Full fluid grid) -->
+<section class="mt-section-padding-desktop bg-surface-container-low py-section-padding-desktop border-t border-outline-variant">
+<div class="max-w-container-max-width mx-auto px-gutter">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-8 text-center md:text-left">You might also like</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Related Card 1 -->
+<a class="group flex flex-col bg-surface border border-outline-variant rounded-lg overflow-hidden hover:border-primary transition-colors" href="#">
+<div class="aspect-[16/10] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" data-alt="A close-up photograph of a vintage printing press showcasing detailed metal typeblocks aligned perfectly. The lighting is moody and directional, highlighting the texture of the metal and the precision of typography. The overall color palette features warm metallic tones, deep greys, and subtle hints of oil. The aesthetic is industrial yet refined." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9If7GnrilY3Ms2CwZ1_UPrZRN19LHVqp_hKlP2DVXc_22azzEwJziRA3jqkSKAWW_6vQQeC4KS9fgb49JYeM3IQOrBcwndED_uTUbnDa8Ms0z3AsTR0lsdDCWc46Z9RFPy3pha54P_2esQCxnPdW_U8fSqQ4S5yMIrpBZ7kkexkS-VpfDUauSYRI75TgQtxEaB8IkKi3lxrgQTGKLwW49cHC4z6KlJx0jzQZyZT6g_er0zic3EPlqBw"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<span class="text-primary font-ui-label text-ui-label mb-2">Typography</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-3 leading-tight group-hover:text-primary transition-colors">The Grid: Foundation of Form</h4>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3 mb-4 flex-grow">
+                                Why strict adherence to a baseline grid solves 90% of your vertical rhythm problems before they start.
+                            </p>
+<span class="font-caption text-caption text-on-surface-variant mt-auto">Oct 12 • 5 min read</span>
+</div>
+</a>
+<!-- Related Card 2 -->
+<a class="group flex flex-col bg-surface border border-outline-variant rounded-lg overflow-hidden hover:border-primary transition-colors" href="#">
+<div class="aspect-[16/10] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" data-alt="An abstract 3D render of smooth, matte geometric primitives (spheres, cubes, cylinders) arranged in a balanced composition on a soft, pale grey background. The lighting is highly diffused, creating a serene, minimalist atmosphere with very soft shadows. The palette is monochromatic with extremely subtle tonal shifts in the grey and white spectrum." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPDkX0Cd1qIeBQp8cJKrJ68WZR8jbqt9RthFxu9Gs0hYQFnOcGy6Idtd86AbB3j9RQVF0DVvWT9i8qe17sVkBd8ND7Ydwe6PdWT7jBZquX95YMrEdOnIZTdYDZrGg5BpdOnrN5Gch5aY8of2LBum4mdh7_Yndo_gxkwlBJGCElJsBuIXy-s-iA5Iwwjjb_HtHe2juhQXvz1Z3X5N6ZMBw4-NWZvyJldEIueAx5mXfIK5F8kZbaHD6v-Q"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<span class="text-primary font-ui-label text-ui-label mb-2">UX Design</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-3 leading-tight group-hover:text-primary transition-colors">Designing for Disconnection</h4>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3 mb-4 flex-grow">
+                                Building offline-first reading experiences that respect the user's focus and battery life.
+                            </p>
+<span class="font-caption text-caption text-on-surface-variant mt-auto">Sep 28 • 11 min read</span>
+</div>
+</a>
+<!-- Related Card 3 (Hidden on tablet to balance grid) -->
+<a class="group hidden lg:flex flex-col bg-surface border border-outline-variant rounded-lg overflow-hidden hover:border-primary transition-colors" href="#">
+<div class="aspect-[16/10] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" data-alt="A photograph of a perfectly organized designer's desk seen from directly above (flat lay). The desk features a clean, white surface. On it rests a sleek closed laptop, a high-quality wirebound notebook open to a blank page, a black fountain pen, and a small, minimalist cup of black coffee. The lighting is bright, even, and natural, conveying a sense of focused, modern work." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMMP4AVdpquPxeUpxptnoHJnpZs8CDuMWHOb5tpF0fznnRVY74KgdjmlwSovG5ooZomGEoaz0WuLr2PPhNB1driytZLBC384Tbt8ijt1qFqw7O0iPHupYs-QodZDaK1PAalzoyuvG4gDMeQ-KOCzOIDtsKguo0LPbSD95974s9FJlQIo6HsqEonwGTmsE98HnafdN-ByXP1-U9oH2jdYFQlLIZ5vylZ62Zg6jsp_YdAvLkjl87yrUldw"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<span class="text-primary font-ui-label text-ui-label mb-2">Process</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-3 leading-tight group-hover:text-primary transition-colors">The Blank Canvas Anxiety</h4>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3 mb-4 flex-grow">
+                                Strategies for overcoming the initial paralysis of starting a new interface project from scratch.
+                            </p>
+<span class="font-caption text-caption text-on-surface-variant mt-auto">Sep 15 • 7 min read</span>
+</div>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="bg-surface-container-low dark:bg-surface-container-lowest text-primary dark:text-primary-fixed-dim border-t border-outline-variant dark:border-outline full-width">
+<div class="w-full py-unit-xl px-unit-lg max-w-container-max-width mx-auto flex flex-col md:flex-row justify-between items-center gap-unit-md">
+<!-- Brand & Copyright -->
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface">The Editorial</span>
+<span class="font-body-md text-body-md text-on-surface-variant text-sm">© 2024 The Editorial. All rights reserved.</span>
+</div>
+<!-- Footer Links -->
+<nav class="flex flex-wrap justify-center gap-6 font-ui-label text-ui-label text-on-surface-variant">
+<a class="opacity-80 hover:opacity-100 hover:underline transition-opacity" href="#">Terms</a>
+<a class="opacity-80 hover:opacity-100 hover:underline transition-opacity" href="#">Privacy</a>
+<a class="opacity-80 hover:opacity-100 hover:underline transition-opacity" href="#">RSS</a>
+<a class="opacity-80 hover:opacity-100 hover:underline transition-opacity" href="#">Contact</a>
+</nav>
+</div>
+</footer>
+<!-- Reading Progress Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const progressBar = document.getElementById('progress-bar');
+            
+            window.addEventListener('scroll', () => {
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight - windowHeight;
+                const scrolled = window.scrollY;
+                
+                if (documentHeight > 0) {
+                    const progress = (scrolled / documentHeight);
+                    progressBar.style.transform = `scaleX(${progress})`;
+                }
+            });
+        });
+    </script>
+</body></html>

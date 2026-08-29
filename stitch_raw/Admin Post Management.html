@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>All Posts - The Editorial Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Source+Serif+4:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#54647a",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#00174b",
+                        "secondary-fixed": "#d3e4fe",
+                        "inverse-primary": "#b4c5ff",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#d0e1fb",
+                        "error": "#ba1a1a",
+                        "secondary": "#505f76",
+                        "on-tertiary-container": "#ffede6",
+                        "surface-container-highest": "#e1e2ed",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#faf8ff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-surface": "#191b23",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#943700",
+                        "inverse-on-surface": "#f0f0fb",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "surface-dim": "#d9d9e5",
+                        "background": "#faf8ff",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "surface-tint": "#0053db",
+                        "surface-container-high": "#e7e7f3",
+                        "outline": "#737686",
+                        "on-background": "#191b23",
+                        "outline-variant": "#c3c6d7",
+                        "primary-container": "#2563eb",
+                        "primary": "#004ac6",
+                        "on-primary-container": "#eeefff",
+                        "surface-container": "#ededf9",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#bc4800",
+                        "surface": "#faf8ff",
+                        "surface-variant": "#e1e2ed",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface-container-low": "#f3f3fe",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2e3039",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-surface-variant": "#434655",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#b4c5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit-md": "16px",
+                        "article-max-width": "700px",
+                        "container-max-width": "1200px",
+                        "unit-lg": "24px",
+                        "section-padding-mobile": "40px",
+                        "unit-xl": "32px",
+                        "section-padding-desktop": "80px",
+                        "gutter": "24px",
+                        "unit-xs": "4px",
+                        "unit-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["\"Source Serif 4\""],
+                        "ui-label": ["Plus Jakarta Sans"],
+                        "body-md": ["\"Source Serif 4\""],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "caption": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["20px", { "lineHeight": "32px", "fontWeight": "400" }],
+                        "ui-label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "body-md": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-md": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased flex">
+<!-- SideNavBar -->
+<nav class="hidden md:flex bg-surface-container dark:bg-surface-container-high text-primary dark:text-primary-fixed-dim docked left-0 h-full w-64 border-r border-outline-variant dark:border-outline flat no shadows fixed left-0 top-0 h-full flex-col p-unit-md z-40">
+<div class="mb-unit-xl">
+<div class="flex items-center gap-3 mb-2">
+<img alt="Admin User" class="w-10 h-10 rounded-full object-cover" data-alt="A small, professional headshot of an administrator in a minimalist setting. The person is looking directly at the camera with a neutral, authoritative expression. Soft, high-key lighting creates a bright, modern light-mode aesthetic, emphasizing clarity and professionalism. The background is a stark, clean white to match the editorial UI style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaqiE0uSsnok5hxPGCU0k_VqJYZ0NOTj1z5p9mXXq-YSBMUyTvrzu7N-KIvo8MJpt5Eevg9QGjesTSJ00FDZhtlSqNCbV_txjOwOUz4wf4WnQQuBVm8l7lg6YCtuzV5PGfwZn2Y-fQN-kE5FmLNvhbyzAyfGbFHB0z3Gtpf0TljVEEpUjxR6fWyVZvo6z21fs1w5Q62O1C8qJgm7BmH9n4VZB8PGXmcQOM-W70-yKdH73BpqQgOYlrCQ"/>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Admin Panel</h2>
+<p class="font-ui-label text-ui-label text-on-surface-variant font-normal">Editor Access</p>
+</div>
+</div>
+</div>
+<ul class="flex flex-col gap-unit-sm flex-grow">
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-ui-label text-ui-label text-on-surface-variant dark:text-on-secondary-container hover:bg-secondary-container dark:hover:bg-on-secondary-fixed-variant transition-colors scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-ui-label text-ui-label text-primary dark:text-primary-fixed-dim font-bold bg-secondary-fixed dark:bg-on-secondary-fixed-variant hover:bg-secondary-container dark:hover:bg-on-secondary-fixed-variant transition-colors scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="article" data-weight="fill">article</span>
+<span>Posts</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-ui-label text-ui-label text-on-surface-variant dark:text-on-secondary-container hover:bg-secondary-container dark:hover:bg-on-secondary-fixed-variant transition-colors scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="category">category</span>
+<span>Categories</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-ui-label text-ui-label text-on-surface-variant dark:text-on-secondary-container hover:bg-secondary-container dark:hover:bg-on-secondary-fixed-variant transition-colors scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="add_box">add_box</span>
+<span>Create Post</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto pt-unit-md border-t border-outline-variant">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-ui-label text-ui-label text-on-surface-variant dark:text-on-secondary-container hover:bg-secondary-container dark:hover:bg-on-secondary-fixed-variant transition-colors scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 ml-0 md:ml-64 min-h-screen bg-background">
+<!-- TopNavBar (Dashboard Context) -->
+<header class="flex justify-between items-center w-full px-unit-lg h-16 bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline flat no shadows sticky top-0 z-30">
+<div class="flex items-center gap-4">
+<!-- Mobile menu button -->
+<button class="md:hidden text-on-surface">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-sm text-headline-sm text-on-surface">Dashboard</h1>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<button class="hover:text-primary dark:hover:text-primary-fixed-dim cursor-pointer transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="hover:text-primary dark:hover:text-primary-fixed-dim cursor-pointer transition-colors">
+<img alt="User Profile" class="w-8 h-8 rounded-full object-cover" data-alt="A small circular profile image of a user, placed in a top navigation bar. The image shows a serene, minimalist portrait with soft, high-key lighting against a clean white background, perfectly matching the overall light-mode editorial aesthetic of the user interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzBZBBQrzHj1jNUiVwTvwRATiJMEnYfOUaboB2BKKUpILujdZi6h45VivAjYVe9j7IZwAj7AIqewmxCU_NVBEH9qbJhfizvpZm82KX7o-SWGR5V-PjjMQVorhScjSuyX-9hgqP_A61IwRbSmDfeZo5Uw1lT3W03j7H4fdExQ0iu-g0UjKk1pGtGUBEM4qgA1A4-rrnd1hCSwQbJMoaFeUooPTF_bOlRW9PTRoVKE5jOBq-bAFFFtlP-Q"/>
+</button>
+</div>
+</header>
+<div class="p-unit-lg md:p-section-padding-desktop max-w-container-max-width mx-auto">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-unit-xl">
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-background">All Posts</h2>
+<button class="bg-primary-container text-on-primary-container font-ui-label text-ui-label px-6 py-3 rounded hover:bg-primary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                    Create New
+                </button>
+</div>
+<!-- Filters & Search -->
+<div class="flex flex-col md:flex-row gap-4 mb-unit-xl">
+<div class="relative flex-grow max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 font-body-md text-on-surface transition-all outline-none" placeholder="Search posts..." type="text"/>
+</div>
+<div class="relative min-w-[160px]">
+<select class="w-full appearance-none pl-4 pr-10 py-2 bg-surface-container-lowest border border-outline-variant rounded focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 font-ui-label text-ui-label text-on-surface transition-all outline-none cursor-pointer">
+<option value="all">Status: All</option>
+<option value="published">Published</option>
+<option value="draft">Draft</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline-variant pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Posts Table (Bento/Card layout for better UI) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant font-ui-label text-ui-label text-on-surface-variant">
+<th class="py-4 px-6 font-semibold">Title</th>
+<th class="py-4 px-6 font-semibold">Category</th>
+<th class="py-4 px-6 font-semibold">Author</th>
+<th class="py-4 px-6 font-semibold">Status</th>
+<th class="py-4 px-6 font-semibold">Published</th>
+<th class="py-4 px-6 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-on-surface divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-4 px-6">
+<div class="font-semibold text-on-surface mb-1">The Future of Minimalist Design</div>
+<div class="font-caption text-caption text-on-surface-variant">A deep dive into intentional whitespace.</div>
+</td>
+<td class="py-4 px-6">
+<span class="bg-surface-variant text-on-surface-variant font-ui-label text-ui-label px-2 py-1 rounded">Design</span>
+</td>
+<td class="py-4 px-6">Elena Rossi</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-caption text-caption bg-[#dcfce7] text-[#166534]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#166534]"></span>
+                                        Published
+                                    </span>
+</td>
+<td class="py-4 px-6 text-on-surface-variant text-sm">Oct 24, 2024</td>
+<td class="py-4 px-6 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1" title="Edit">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="text-on-surface-variant hover:text-error transition-colors p-1" title="Delete">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-4 px-6">
+<div class="font-semibold text-on-surface mb-1">Typography in the Digital Age</div>
+<div class="font-caption text-caption text-on-surface-variant">Why sans-serif continues to dominate screens.</div>
+</td>
+<td class="py-4 px-6">
+<span class="bg-surface-variant text-on-surface-variant font-ui-label text-ui-label px-2 py-1 rounded">Typography</span>
+</td>
+<td class="py-4 px-6">Marcus Chen</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-caption text-caption bg-[#fef08a] text-[#854d0e]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#854d0e]"></span>
+                                        Draft
+                                    </span>
+</td>
+<td class="py-4 px-6 text-on-surface-variant text-sm">-</td>
+<td class="py-4 px-6 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1" title="Edit">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="text-on-surface-variant hover:text-error transition-colors p-1" title="Delete">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-4 px-6">
+<div class="font-semibold text-on-surface mb-1">Understanding Color Theory for UI</div>
+<div class="font-caption text-caption text-on-surface-variant">Practical applications of tonal layers.</div>
+</td>
+<td class="py-4 px-6">
+<span class="bg-surface-variant text-on-surface-variant font-ui-label text-ui-label px-2 py-1 rounded">UI/UX</span>
+</td>
+<td class="py-4 px-6">Sarah Jenkins</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-caption text-caption bg-[#dcfce7] text-[#166534]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#166534]"></span>
+                                        Published
+                                    </span>
+</td>
+<td class="py-4 px-6 text-on-surface-variant text-sm">Oct 20, 2024</td>
+<td class="py-4 px-6 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1" title="Edit">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="text-on-surface-variant hover:text-error transition-colors p-1" title="Delete">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="py-4 px-6">
+<div class="font-semibold text-on-surface mb-1">The Fall of the Hamburger Menu</div>
+<div class="font-caption text-caption text-on-surface-variant">Navigational patterns in modern web design.</div>
+</td>
+<td class="py-4 px-6">
+<span class="bg-surface-variant text-on-surface-variant font-ui-label text-ui-label px-2 py-1 rounded">UI/UX</span>
+</td>
+<td class="py-4 px-6">David Kim</td>
+<td class="py-4 px-6">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full font-caption text-caption bg-[#fef08a] text-[#854d0e]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#854d0e]"></span>
+                                        Draft
+                                    </span>
+</td>
+<td class="py-4 px-6 text-on-surface-variant text-sm">-</td>
+<td class="py-4 px-6 text-right">
+<div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-1" title="Edit">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit">edit</span>
+</button>
+<button class="text-on-surface-variant hover:text-error transition-colors p-1" title="Delete">
+<span class="material-symbols-outlined text-[20px]" data-icon="delete">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-outline-variant bg-surface-container-low flex items-center justify-between">
+<span class="font-ui-label text-ui-label text-on-surface-variant">Page 1 of 3</span>
+<div class="flex gap-2">
+<button class="p-2 rounded border border-outline-variant text-outline hover:text-on-surface hover:border-outline transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="p-2 rounded border border-outline-variant text-on-surface hover:border-outline hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

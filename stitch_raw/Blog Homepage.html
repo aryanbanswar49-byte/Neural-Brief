@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Editorial - Blog Homepage</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Plus Jakarta Sans & Source Serif 4 -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#54647a",
+                      "tertiary-fixed-dim": "#ffb596",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed": "#00174b",
+                      "secondary-fixed": "#d3e4fe",
+                      "inverse-primary": "#b4c5ff",
+                      "on-error": "#ffffff",
+                      "secondary-container": "#d0e1fb",
+                      "error": "#ba1a1a",
+                      "secondary": "#505f76",
+                      "on-tertiary-container": "#ffede6",
+                      "surface-container-highest": "#e1e2ed",
+                      "error-container": "#ffdad6",
+                      "surface-bright": "#faf8ff",
+                      "primary-fixed": "#dbe1ff",
+                      "on-secondary-fixed": "#0b1c30",
+                      "on-surface": "#191b23",
+                      "on-primary": "#ffffff",
+                      "tertiary": "#943700",
+                      "inverse-on-surface": "#f0f0fb",
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "surface-dim": "#d9d9e5",
+                      "background": "#faf8ff",
+                      "on-tertiary-fixed": "#360f00",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "surface-tint": "#0053db",
+                      "surface-container-high": "#e7e7f3",
+                      "outline": "#737686",
+                      "on-background": "#191b23",
+                      "outline-variant": "#c3c6d7",
+                      "primary-container": "#2563eb",
+                      "primary": "#004ac6",
+                      "on-primary-container": "#eeefff",
+                      "surface-container": "#ededf9",
+                      "on-error-container": "#93000a",
+                      "tertiary-container": "#bc4800",
+                      "surface": "#faf8ff",
+                      "surface-variant": "#e1e2ed",
+                      "tertiary-fixed": "#ffdbcd",
+                      "surface-container-low": "#f3f3fe",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-surface": "#2e3039",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "on-surface-variant": "#434655",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed-dim": "#b4c5ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit-md": "16px",
+                      "article-max-width": "700px",
+                      "container-max-width": "1200px",
+                      "unit-lg": "24px",
+                      "section-padding-mobile": "40px",
+                      "unit-xl": "32px",
+                      "section-padding-desktop": "80px",
+                      "gutter": "24px",
+                      "unit-xs": "4px",
+                      "unit-sm": "8px"
+              },
+              "fontFamily": {
+                      "body-lg": [
+                              "\"Source Serif 4\""
+                      ],
+                      "ui-label": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "\"Source Serif 4\""
+                      ],
+                      "display-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "caption": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "display-lg-mobile": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-sm": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "body-lg": [
+                              "20px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "ui-label": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "30px",
+                              {
+                                      "lineHeight": "38px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        /* Minimalist Input Focus Styles */
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: theme('colors.primary-container');
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+<!-- TopNavBar (From Shared Components) -->
+<nav class="bg-background text-primary flex justify-between items-center w-full px-unit-lg max-w-container-max-width mx-auto h-20 border-b border-outline-variant full-width top-0 transition-all duration-200 ease-in-out">
+<div class="font-display-lg text-display-lg font-extrabold text-on-background">The Editorial</div>
+<ul class="hidden md:flex space-x-8 items-center">
+<li>
+<a class="font-ui-label text-ui-label text-primary border-b-2 border-primary pb-1 transition-colors duration-200 ease-in-out" href="#">Home</a>
+</li>
+<li>
+<a class="font-ui-label text-ui-label text-on-surface-variant hover:text-primary transition-colors duration-200 ease-in-out" href="#">Blog</a>
+</li>
+<li>
+<a class="font-ui-label text-ui-label text-on-surface-variant hover:text-primary transition-colors duration-200 ease-in-out" href="#">Categories</a>
+</li>
+</ul>
+<div class="flex items-center space-x-4">
+<button class="font-ui-label text-ui-label text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+<span class="hidden sm:inline">Search</span>
+</button>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-container-max-width mx-auto px-unit-lg py-section-padding-mobile md:py-section-padding-desktop">
+<!-- Hero: Featured Blog Post -->
+<section class="mb-section-padding-desktop">
+<article class="grid grid-cols-1 md:grid-cols-12 gap-unit-xl md:gap-section-padding-mobile items-center group cursor-pointer">
+<div class="md:col-span-7 overflow-hidden rounded-lg">
+<img alt="Featured Post Image" class="w-full h-auto aspect-video object-cover transition-transform duration-700 ease-in-out group-hover:scale-105" data-alt="A striking, high-contrast black and white architectural photograph featuring a minimalist concrete structure against a clear sky. Strong geometric shadows cut across the frame, emphasizing the brutalist, modern design aesthetic. The lighting is harsh midday sun, creating deep, dramatic shadows and bright highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfD-XDtoBlzsgxZTgtYEXgt5YHCPtWLDkeXlHZrpXrevsEHj8IiUsd42mKO7h8fEdODS7UTP-zihHvnEj4ifIuWQZPVxx_mY0TdD-nW5QHbpBuz9uWcg4R5XQ8AsdQxwgJCgHUCe6qK8Z7x_HrhiY7vNNBXhNU1e1u4I4IVVHJmy3f1mc51kSuY5PdeW3yNe_i1S6O5D5i3XvL6FM6yZAaDb2VhBWXfk72HZm6-GKP9W-5uwEUTK9Vog"/>
+</div>
+<div class="md:col-span-5 flex flex-col justify-center">
+<span class="font-ui-label text-ui-label text-on-surface-variant mb-unit-sm uppercase tracking-widest">Architecture</span>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-background mb-unit-md group-hover:text-primary transition-colors">The Resurgence of Brutalism in Modern Urban Design</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-unit-lg line-clamp-3">
+                        Exploring why stark concrete forms and exposed structural elements are making a dramatic comeback in city centers worldwide, challenging our perceptions of beauty and utility in the built environment.
+                    </p>
+<div class="flex items-center space-x-3 font-caption text-caption text-on-surface-variant">
+<span>By Elena Rostova</span>
+<span>•</span>
+<span>Oct 24, 2024</span>
+<span>•</span>
+<span>8 min read</span>
+</div>
+</div>
+</article>
+</section>
+<!-- Main Content Area: Grid + Sidebar -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-unit-xl md:gap-16">
+<!-- Left Column: Recent Posts Grid (8 cols on large screens) -->
+<div class="lg:col-span-8">
+<h2 class="font-headline-md text-headline-md text-on-background mb-unit-xl border-b border-outline-variant pb-unit-sm">Latest Articles</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-unit-lg gap-y-unit-xl">
+<!-- Post 1 -->
+<article class="group cursor-pointer">
+<div class="overflow-hidden rounded mb-unit-md">
+<img alt="Post 1" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A serene, minimalist interior design setup featuring a single mid-century modern wooden chair placed next to a large potted Monstera plant. The walls are a soft, warm white. Natural sunlight streams through an unseen window, casting delicate leaf shadows across the pristine floor. The mood is calm and aspirational." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvjEZHqMb29Gm0pmXjSIDtpkwCv2e7aQMT6glwbomqMLjSCPPszZeK1kpS7UA8H9ztbHoZ1lGu_rSNdS6arnL2wszHIX83GyLUJrvCEpNWnP1FzTwRxCyQsk4clWXMlG6004SxevrLdP-qDesyUJeU9CyzAsuEXQgPaGUn1I2Uk-qYITIJvnLxAabU2dgH8OWV32hN_T01WLMgQeJ7QXnLT_lq20g-sCMGT8zn7WwYV9K154svONH86Q"/>
+</div>
+<span class="font-ui-label text-ui-label text-on-surface-variant mb-2 block uppercase tracking-wide">Interior</span>
+<h3 class="font-headline-sm text-headline-sm text-on-background mb-2 group-hover:text-primary transition-colors line-clamp-2">Cultivating Calm: Minimalist Spaces for Focused Minds</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2">How reducing visual noise in your living environment can significantly lower stress levels and improve daily focus.</p>
+<div class="font-caption text-caption text-on-surface-variant">
+<span>Oct 22, 2024</span>
+</div>
+</article>
+<!-- Post 2 -->
+<article class="group cursor-pointer">
+<div class="overflow-hidden rounded mb-unit-md">
+<img alt="Post 2" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A macro photograph of artisan coffee beans resting on a raw, textured slate surface. A wisp of steam rises elegantly from a sleek, matte black ceramic cup in the background. The lighting is moody and directional, highlighting the rich oils on the beans and the subtle texture of the stone. Professional culinary aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByTfVoH9_5l4pFGKq_9dHuHIT8iOi7TTi_yvmbKBNDjUNFz0DVDsl2q0Aw2rIDXysNMp784HmCeurDydh5XjyUWZZ3yqfZEIwj3-UUXYEO5Na2nXylkK1gxmu6mAdahLU9jIbvqP83vr3qo6pDVKIAyPThmZlpjn9rXhD_4FKynL5_r4qaq_RCfJ8rkYJYQh9cpoor1cxWcARUInuBJ52DfVWHDL3jHyXE2M6qI_TXA9s6yo8ABAwMlQ"/>
+</div>
+<span class="font-ui-label text-ui-label text-on-surface-variant mb-2 block uppercase tracking-wide">Culture</span>
+<h3 class="font-headline-sm text-headline-sm text-on-background mb-2 group-hover:text-primary transition-colors line-clamp-2">The Nuance of the Third Wave Coffee Movement</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2">Moving beyond mere caffeine delivery, how independent roasters are treating coffee with the reverence of fine wine.</p>
+<div class="font-caption text-caption text-on-surface-variant">
+<span>Oct 18, 2024</span>
+</div>
+</article>
+<!-- Post 3 -->
+<article class="group cursor-pointer">
+<div class="overflow-hidden rounded mb-unit-md">
+<img alt="Post 3" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A clean, abstract composition of layered, semi-transparent frosted glass panels. Soft pastel light in hues of pale blue and warm peach filters through the layers, creating a sense of depth and modern digital elegance. The aesthetic is highly polished, professional, and evocative of modern UI design systems." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmAI3VWj3CXe5toETWkbQC4dMc_Ufxk1aUT-u5BxP8o9ly5gAvyUvQ6thOwH02YhI1R5r9-ieasDxsXBKEs1a8WyJkKR8dn0yWeDAexzrq5IAEU8momjMm06DW_uOopd1gIMiroTCyYPJwlDyuWmMmo9zppQavIEwJqk7QTDRcf9NT_WbgOAuuIdRmRkC08FPjxNtfQaeTeSPuXSPozzB3H4Y2o4noVk2pT5cRYNSfa3NwoWy-gwLL7w"/>
+</div>
+<span class="font-ui-label text-ui-label text-on-surface-variant mb-2 block uppercase tracking-wide">Technology</span>
+<h3 class="font-headline-sm text-headline-sm text-on-background mb-2 group-hover:text-primary transition-colors line-clamp-2">Glassmorphism: The Evolving Aesthetics of Interfaces</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2">Tracing the origins and psychological impact of frosted glass effects in contemporary digital product design.</p>
+<div class="font-caption text-caption text-on-surface-variant">
+<span>Oct 15, 2024</span>
+</div>
+</article>
+<!-- Post 4 -->
+<article class="group cursor-pointer">
+<div class="overflow-hidden rounded mb-unit-md">
+<img alt="Post 4" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A stark, minimalist landscape photograph of a solitary, ancient pine tree standing on a rocky outcrop against a foggy, muted grey sky. The scene is quiet, contemplative, and heavily relies on negative space. The color palette is almost monochromatic, dominated by slate grey, deep forest green, and misty white." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3Yey6aVStmVPPaa_XANpAV81UPM0zbFyFg2e4H22OZviH6GXYTx0AcAngKXSfszDoRuwfz4lAshG1raHfsbx2ABzkyl7sSf5VA7KJ6T9wggZH8mOX5gzKBz4caFnOdCxl9rFXiRXZ1kVfIt4w6z4lVPja2y6R_n2yjRVVWBxcesJdS1ERs0Fs1O8Den9IpXXUK69388-S_Zd1_kfJMVzd46W29CYYfvXfaO8it84fHI8sC_q7MlH1tg"/>
+</div>
+<span class="font-ui-label text-ui-label text-on-surface-variant mb-2 block uppercase tracking-wide">Nature</span>
+<h3 class="font-headline-sm text-headline-sm text-on-background mb-2 group-hover:text-primary transition-colors line-clamp-2">Silence and Stone: Finding Solitude in High Altitudes</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2">A photographic essay documenting the quiet majesty of tree lines in remote, mountainous regions.</p>
+<div class="font-caption text-caption text-on-surface-variant">
+<span>Oct 10, 2024</span>
+</div>
+</article>
+</div>
+<div class="mt-unit-xl flex justify-center">
+<button class="bg-surface-container-highest hover:bg-surface-variant text-on-surface font-ui-label text-ui-label py-3 px-8 rounded transition-colors duration-200 border border-outline-variant">
+                        Load More Articles
+                    </button>
+</div>
+</div>
+<!-- Right Column: Sidebar (4 cols on large screens) -->
+<aside class="lg:col-span-4 space-y-12 mt-12 lg:mt-0">
+<!-- Search Widget -->
+<div class="bg-surface p-unit-lg border border-outline-variant rounded-lg">
+<h3 class="font-headline-sm text-headline-sm text-on-background mb-unit-md">Search</h3>
+<div class="relative">
+<input class="w-full border border-outline-variant rounded p-3 pl-10 bg-background text-on-background font-body-md text-body-md focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all" placeholder="Keywords..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-3 text-outline">search</span>
+</div>
+</div>
+<!-- Categories Widget -->
+<div class="bg-surface p-unit-lg border border-outline-variant rounded-lg">
+<h3 class="font-headline-sm text-headline-sm text-on-background mb-unit-md">Categories</h3>
+<ul class="space-y-3 font-body-md text-body-md text-on-surface-variant">
+<li>
+<a class="flex justify-between items-center group hover:text-primary transition-colors py-1 border-b border-outline-variant/30" href="#">
+<span>Architecture</span>
+<span class="font-caption text-caption text-outline group-hover:text-primary">14</span>
+</a>
+</li>
+<li>
+<a class="flex justify-between items-center group hover:text-primary transition-colors py-1 border-b border-outline-variant/30" href="#">
+<span>Design Theory</span>
+<span class="font-caption text-caption text-outline group-hover:text-primary">28</span>
+</a>
+</li>
+<li>
+<a class="flex justify-between items-center group hover:text-primary transition-colors py-1 border-b border-outline-variant/30" href="#">
+<span>Culture &amp; Society</span>
+<span class="font-caption text-caption text-outline group-hover:text-primary">42</span>
+</a>
+</li>
+<li>
+<a class="flex justify-between items-center group hover:text-primary transition-colors py-1 border-b border-outline-variant/30" href="#">
+<span>Technology</span>
+<span class="font-caption text-caption text-outline group-hover:text-primary">19</span>
+</a>
+</li>
+<li>
+<a class="flex justify-between items-center group hover:text-primary transition-colors py-1" href="#">
+<span>Visual Arts</span>
+<span class="font-caption text-caption text-outline group-hover:text-primary">31</span>
+</a>
+</li>
+</ul>
+</div>
+<!-- Newsletter Widget -->
+<div class="bg-surface-container-low p-unit-lg border border-outline-variant rounded-lg">
+<h3 class="font-headline-sm text-headline-sm text-on-background mb-2">Weekly Digest</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-unit-md">Curated essays and editorial pieces delivered directly to your inbox every Sunday.</p>
+<form class="space-y-3" onsubmit="event.preventDefault();">
+<input class="w-full border border-outline-variant rounded p-3 bg-background text-on-background font-body-md text-body-md focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all" placeholder="Your email address" type="email"/>
+<button class="w-full bg-primary-container text-on-primary-container font-ui-label text-ui-label py-3 px-4 rounded hover:bg-primary transition-colors" type="submit">
+                            Subscribe
+                        </button>
+</form>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer (From Shared Components) -->
+<footer class="bg-surface-container-low text-primary border-t border-outline-variant mt-auto">
+<div class="w-full py-unit-xl px-unit-lg max-w-container-max-width mx-auto flex flex-col md:flex-row justify-between items-center gap-unit-md">
+<div class="font-headline-sm text-headline-sm text-on-surface">
+                The Editorial
+            </div>
+<div class="font-body-md text-body-md text-on-surface-variant opacity-80">
+                © 2024 The Editorial. All rights reserved.
+            </div>
+<ul class="flex space-x-6 font-ui-label text-ui-label text-on-surface-variant">
+<li><a class="hover:underline hover:text-primary opacity-80 hover:opacity-100 transition-opacity" href="#">Terms</a></li>
+<li><a class="hover:underline hover:text-primary opacity-80 hover:opacity-100 transition-opacity" href="#">Privacy</a></li>
+<li><a class="hover:underline hover:text-primary opacity-80 hover:opacity-100 transition-opacity" href="#">RSS</a></li>
+<li><a class="hover:underline hover:text-primary opacity-80 hover:opacity-100 transition-opacity" href="#">Contact</a></li>
+</ul>
+</div>
+</footer>
+</body></html>

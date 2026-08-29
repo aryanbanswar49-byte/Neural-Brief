@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Latest Stories - The Editorial</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;family=Source+Serif+4:opsz,wght@8..60,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#54647a",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#00174b",
+                        "secondary-fixed": "#d3e4fe",
+                        "inverse-primary": "#b4c5ff",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#d0e1fb",
+                        "error": "#ba1a1a",
+                        "secondary": "#505f76",
+                        "on-tertiary-container": "#ffede6",
+                        "surface-container-highest": "#e1e2ed",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#faf8ff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-surface": "#191b23",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#943700",
+                        "inverse-on-surface": "#f0f0fb",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "surface-dim": "#d9d9e5",
+                        "background": "#faf8ff",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "surface-tint": "#0053db",
+                        "surface-container-high": "#e7e7f3",
+                        "outline": "#737686",
+                        "on-background": "#191b23",
+                        "outline-variant": "#c3c6d7",
+                        "primary-container": "#2563eb",
+                        "primary": "#004ac6",
+                        "on-primary-container": "#eeefff",
+                        "surface-container": "#ededf9",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#bc4800",
+                        "surface": "#faf8ff",
+                        "surface-variant": "#e1e2ed",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface-container-low": "#f3f3fe",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2e3039",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "on-surface-variant": "#434655",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#b4c5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit-md": "16px",
+                        "article-max-width": "700px",
+                        "container-max-width": "1200px",
+                        "unit-lg": "24px",
+                        "section-padding-mobile": "40px",
+                        "unit-xl": "32px",
+                        "section-padding-desktop": "80px",
+                        "gutter": "24px",
+                        "unit-xs": "4px",
+                        "unit-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["\"Source Serif 4\""],
+                        "ui-label": ["Plus Jakarta Sans"],
+                        "body-md": ["\"Source Serif 4\""],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "caption": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["20px", { "lineHeight": "32px", "fontWeight": "400" }],
+                        "ui-label": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "body-md": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-md": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+                        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-background border-b border-outline-variant docked full-width top-0 w-full transition-all duration-200 ease-in-out z-50">
+<div class="flex justify-between items-center w-full px-unit-lg max-w-container-max-width mx-auto h-20">
+<!-- Brand Logo -->
+<a class="font-display-lg text-display-lg font-extrabold text-on-background" href="#">
+                The Editorial
+            </a>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center gap-unit-xl">
+<a class="text-on-surface-variant font-ui-label text-ui-label hover:text-primary transition-colors cursor-pointer" href="#">
+                    Home
+                </a>
+<a class="text-primary border-b-2 border-primary pb-1 font-ui-label text-ui-label hover:text-primary transition-colors cursor-pointer" href="#">
+                    Blog
+                </a>
+<a class="text-on-surface-variant font-ui-label text-ui-label hover:text-primary transition-colors cursor-pointer" href="#">
+                    Categories
+                </a>
+</nav>
+<!-- Trailing Action -->
+<div class="hidden md:flex items-center gap-unit-md">
+<button class="font-ui-label text-ui-label text-primary hover:bg-surface-container rounded px-unit-md py-unit-sm transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+                    Search
+                </button>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-on-surface-variant p-2 rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-container-max-width mx-auto px-unit-lg py-section-padding-mobile md:py-section-padding-desktop">
+<!-- Page Header -->
+<div class="mb-unit-xl md:mb-section-padding-mobile">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-unit-lg">
+                Latest Stories
+            </h1>
+<!-- Filters & Search Bar -->
+<div class="flex flex-col md:flex-row gap-unit-md items-start md:items-center justify-between bg-surface-container-low p-unit-md rounded border border-outline-variant">
+<!-- Search Input -->
+<div class="relative w-full md:w-96">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all font-body-md text-body-md text-on-surface placeholder:text-outline-variant outline-none" placeholder="Search articles..." type="text"/>
+</div>
+<!-- Category Filter -->
+<div class="relative w-full md:w-auto">
+<select class="w-full md:w-48 appearance-none bg-surface-container-lowest border border-outline-variant rounded px-4 py-2 pr-10 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all font-ui-label text-ui-label text-on-surface outline-none cursor-pointer">
+<option value="all">All Categories</option>
+<option value="technology">Technology</option>
+<option value="design">Design</option>
+<option value="culture">Culture</option>
+<option value="business">Business</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Blog Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-unit-xl mb-section-padding-mobile">
+<!-- Post 1 (Featured/Larger) -->
+<article class="col-span-1 md:col-span-2 lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-unit-xl group cursor-pointer border-b border-outline-variant pb-unit-xl md:pb-section-padding-mobile">
+<div class="aspect-video md:aspect-[4/3] rounded overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" data-alt="A striking editorial photograph of a modern architect reviewing digital blueprints on a sleek tablet in a brightly lit, minimalist studio. The room features high-key natural lighting pouring in from large windows, emphasizing a crisp, professional aesthetic. The color palette revolves around cool whites, concrete greys, and a singular pop of cobalt blue from a nearby architectural model. The mood is focused, innovative, and authoritative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm9y9IWMc3FlRbsDFUj8WBKJKaFQpTkuUXTvyEXp6pPHpfwwNZfbW-x6PkypiZ8cOlXoFn2xrkot2uZkciTjp0o8ICfMUzd4OUKbp6ST62G7Cd_0gEzbiFA3fWS8s7g3HZJs66lIpVCXMP2W18K5rnQS0FIzgzMc3QPjLIpaf6DiIMwndyWxvV9M-SnNJdwL8o-u49YUdsiae7zIEManxVS49W9lSizYzjdVU9VcsSVIo7MHi123KDSA"/>
+</div>
+<div class="flex flex-col justify-center">
+<div class="mb-unit-sm">
+<span class="inline-block px-3 py-1 bg-surface-container text-on-surface-variant font-ui-label text-ui-label rounded-full">Architecture</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-unit-md group-hover:text-primary transition-colors">
+                        The Future of Urban Spaces in a Post-Digital Era
+                    </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-unit-lg line-clamp-3">
+                        As cities evolve, the intersection of physical infrastructure and digital augmentation is creating entirely new paradigms for human interaction. We explore how leading architects are designing for this blended reality, prioritizing sustainable materials alongside ubiquitous connectivity.
+                    </p>
+<div class="flex items-center gap-unit-sm mt-auto pt-unit-md border-t border-outline-variant/50">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of an elegant woman with short dark hair, wearing a crisp white collared shirt against a minimal pale grey background. High-key lighting, modern editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFEuVBKDl7EOfXHxjraWgZp6FqtowJ7SCAAss3V1twSMlO8DuU6vv7v9xtRY2_8X_LsoBmA17Fv0LW-gYxc0jWiV2cRiQcSCcgPklEZH6xQNozqlI1rq_xOQ9BQmcwa5eY_WHMvbWJd7HaOfuNfkbLe0vfX2DeklmeCZWjH8mhPsEdqFSzYjn67RuhrEuRRXt0SeGdIVb0-S5mcEzs9RTklI3-uji36FyTVN2_czrNlrKZ-c8kJc9Axw"/>
+</div>
+<div>
+<p class="font-ui-label text-ui-label text-on-surface">Sarah Jenkins</p>
+<p class="font-caption text-caption text-outline">Oct 12, 2024 • 8 min read</p>
+</div>
+</div>
+</div>
+</article>
+<!-- Post 2 -->
+<article class="flex flex-col group cursor-pointer">
+<div class="aspect-[4/3] rounded overflow-hidden bg-surface-container-high mb-unit-md">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" data-alt="A minimalist flat lay arrangement of high-end mechanical keyboard parts, a brass ruler, and a bespoke fountain pen on a pristine white desk surface. Overhead high-key lighting creates soft shadows. The aesthetic is extremely clean, focusing on craftsmanship and premium materials in subtle metallic tones and stark whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMw8n4GSnxfxv-Gd_Gaz6H2AN27LqhXjc46DLJO4BzDsX0maopP8x667gnQfBxQVRH7i2UeRTMEkExLdQ1TdzGPhOXryQmFs3X86b9oaHo7GoCjnShwHVYFlmdNbJ7V5SaYGeBUZyKadmwGNm7ACafqECCIwAHCW4R-jbOdfLJgJd9FI5Ycck9IFdWGhLrCrOIKnhuIGMayyy39JJNWXOvn0F38fZ5JIhmD1diebrPyzdpsY--gKQqnw"/>
+</div>
+<div class="mb-unit-sm">
+<span class="inline-block px-3 py-1 bg-surface-container text-on-surface-variant font-ui-label text-ui-label rounded-full">Technology</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-unit-sm group-hover:text-primary transition-colors line-clamp-2">
+                    The Resurgence of Tactile Computing Interfaces
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-unit-md line-clamp-2 flex-grow">
+                    Why professionals are abandoning glass screens for precision-engineered mechanical inputs in their daily workflows.
+                </p>
+<div class="flex items-center gap-unit-sm pt-unit-sm border-t border-outline-variant/50">
+<p class="font-caption text-caption text-outline">Oct 10, 2024 • By Marcus Chen</p>
+</div>
+</article>
+<!-- Post 3 -->
+<article class="flex flex-col group cursor-pointer">
+<div class="aspect-[4/3] rounded overflow-hidden bg-surface-container-high mb-unit-md">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" data-alt="An abstract typographic composition featuring large, bold serif letters intersecting with geometric sans-serif shapes on an off-white paper texture background. The design is strictly monochromatic with deep charcoal ink tones. High contrast, precise layout, evoking classic editorial print design principles adapted for digital." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANnb7pJxDtpM2ohQhpGA6bnQoUtIcsEnCAFnTv5A5OpGTUyML-yFWp6E2AT1hIVvCqe3g5pjUplIq0rO0uAdaJkNt63yZYByFwo3LOeX0Iort0hV7i-w2lT53poSMMyjZtos6qwlXjf8sCnt4MLmkuX4uysCaClkJncxXdAJUOhmwrCLLnhsxZ7BmJelQX0vuIn7zU1jONYPgJo29XMiKHBxWYO1sNa359FA4RYJF6hSV4jPKURw4UeQ"/>
+</div>
+<div class="mb-unit-sm">
+<span class="inline-block px-3 py-1 bg-surface-container text-on-surface-variant font-ui-label text-ui-label rounded-full">Design</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-unit-sm group-hover:text-primary transition-colors line-clamp-2">
+                    Typography as Structure: Lessons from Swiss Grids
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-unit-md line-clamp-2 flex-grow">
+                    Revisiting the foundational rules of mid-century layout design and applying them to modern responsive web environments.
+                </p>
+<div class="flex items-center gap-unit-sm pt-unit-sm border-t border-outline-variant/50">
+<p class="font-caption text-caption text-outline">Oct 08, 2024 • By Elena Rostova</p>
+</div>
+</article>
+<!-- Post 4 -->
+<article class="flex flex-col group cursor-pointer">
+<div class="aspect-[4/3] rounded overflow-hidden bg-surface-container-high mb-unit-md">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" data-alt="A serene, minimalist home office setup focusing on a solitary bonsai tree next to a sleek aluminum laptop. The space is flooded with diffuse morning light. The color palette is muted, with soft slate greys, warm wood tones, and natural green. The atmosphere is calm, focused, and deeply professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB14UoS3zZ0HhAI84OTcGo0fhzSYqVYW2yXJo2xDmEeKDJCV7qj-xLEiw8Hkad-kE8BAomBsfi320smC0GBdsqGTAm2vgQbHTVJx_2PEpvsPrU_19rxeLB79x1Maq17zmHJxssQy7Y4mupJL_XWgZqTVr-h6wl150oMUNxfY_HURhGoZpRNL2QSH9PrPd7nU7b2umN4Wjbz_Num5T0v7z5gqLvX9oToGJsSyVDtt3zZPRMxucS4TNC6jw"/>
+</div>
+<div class="mb-unit-sm">
+<span class="inline-block px-3 py-1 bg-surface-container text-on-surface-variant font-ui-label text-ui-label rounded-full">Culture</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-unit-sm group-hover:text-primary transition-colors line-clamp-2">
+                    The Myth of the Optimal Morning Routine
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-unit-md line-clamp-2 flex-grow">
+                    Deconstructing the productivity industry's obsession with 5 AM wake-ups and finding sustainable rhythms instead.
+                </p>
+<div class="flex items-center gap-unit-sm pt-unit-sm border-t border-outline-variant/50">
+<p class="font-caption text-caption text-outline">Oct 05, 2024 • By David Kim</p>
+</div>
+</article>
+</div>
+<!-- Pagination / Load More -->
+<div class="flex justify-center pt-unit-xl border-t border-outline-variant">
+<button class="bg-surface-container-lowest border border-outline-variant text-on-surface font-ui-label text-ui-label py-3 px-8 rounded hover:border-primary hover:text-primary transition-colors">
+                Load More Stories
+            </button>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-low border-t border-outline-variant w-full mt-auto">
+<div class="w-full py-unit-xl px-unit-lg max-w-container-max-width mx-auto flex flex-col md:flex-row justify-between items-center gap-unit-md">
+<!-- Brand Logo -->
+<div class="font-headline-sm text-headline-sm text-on-surface">
+                The Editorial
+            </div>
+<!-- Links -->
+<nav class="flex gap-unit-lg">
+<a class="text-on-surface-variant font-ui-label text-ui-label hover:underline opacity-80 hover:opacity-100 transition-opacity" href="#">
+                    Terms
+                </a>
+<a class="text-on-surface-variant font-ui-label text-ui-label hover:underline opacity-80 hover:opacity-100 transition-opacity" href="#">
+                    Privacy
+                </a>
+<a class="text-on-surface-variant font-ui-label text-ui-label hover:underline opacity-80 hover:opacity-100 transition-opacity" href="#">
+                    RSS
+                </a>
+<a class="text-on-surface-variant font-ui-label text-ui-label hover:underline opacity-80 hover:opacity-100 transition-opacity" href="#">
+                    Contact
+                </a>
+</nav>
+<!-- Copyright -->
+<div class="font-body-md text-body-md text-on-surface-variant opacity-80">
+                © 2024 The Editorial. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>
