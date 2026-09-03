@@ -1,119 +1,186 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-
-interface User {
-  name: string;
-  email: string;
-}
-
-interface AdminAccount extends User {
-  passwordHash: string; // Storing plain passwords for simulation purposes
-  createdAt: string;
-}
+import { User, Session } from '@supabase/supabase-js';
+import { supabase } from '../lib/supabase';
+import { Profile, UserRole } from '../types';
 
 interface AuthContextType {
-  isAuthenticated: boolean;
   user: User | null;
-  login: (email: string, password: string) => Promise<boolean>;
-  register: (name: string, email: string, password: string) => Promise<{ success: boolean; message?: string }>;
-  logout: () => void;
+  profile: Profile | null;
+  session: Session | null;
+  role: UserRole | null;
+  isAdmin: boolean;
+  isAuthenticated: boolean;
   loading: boolean;
+  login: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
+  logout: () => Promise<void>;
+  resetPassword: (email: string) => Promise<{ success: boolean; error?: string }>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const LOCAL_STORAGE_ADMINS_KEY = 'the_editorial_registered_admins';
-
-const DEFAULT_ADMINS: AdminAccount[] = [
-  {
-    name: 'Elena Rostova',
-    email: 'admin@theeditorial.com',
-    passwordHash: 'admin123',
-    createdAt: new Date().toISOString()
-  }
-];
-
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [session, setSession] = useState<Session | null>(null);
   const [user, setUser] = useState<User | null>(null);
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  // Initialize registered admins in localStorage
-  const getRegisteredAdmins = (): AdminAccount[] => {
-    const data = localStorage.getItem(LOCAL_STORAGE_ADMINS_KEY);
-    if (!data) {
-      localStorage.setItem(LOCAL_STORAGE_ADMINS_KEY, JSON.stringify(DEFAULT_ADMINS));
-      return DEFAULT_ADMINS;
+  // Fetch user profile from Supabase PostgreSQL database
+  const fetchProfile = async (userId: string): Promise<Profile | null> => {
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', userId)
+        .maybeSingle();
+
+      if (error) {
+        console.error('[AuthContext.fetchProfile error]', error);
+        return null;
+      }
+
+      return data as Profile | null;
+    } catch (err) {
+      console.error('[AuthContext.fetchProfile exception]', err);
+      return null;
     }
-    return JSON.parse(data);
   };
 
   useEffect(() => {
-    getRegisteredAdmins(); // run initializer
-    const savedUser = localStorage.getItem('the_editorial_admin_user');
-    const token = localStorage.getItem('the_editorial_admin_token');
-    if (savedUser && token) {
-      setUser(JSON.parse(savedUser));
-      setIsAuthenticated(true);
-    }
-    setLoading(false);
-  }, []);
+    let mounted = true;
 
-  const login = async (email: string, password: string): Promise<boolean> => {
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    
-    const admins = getRegisteredAdmins();
-    const matchedAdmin = admins.find(
-      (acc) => acc.email.toLowerCase() === email.toLowerCase() && acc.passwordHash === password
-    );
+    // 1. Initialize Auth session on load
+    const initializeAuth = async () => {
+      try {
+        const { data: { session: currentSession }, error } = await supabase.auth.getSession();
+        
+        if (error) {
+          console.error('[AuthContext.getSession error]', error);
+        }
 
-    if (matchedAdmin) {
-      const adminUser = { name: matchedAdmin.name, email: matchedAdmin.email };
-      setUser(adminUser);
-      setIsAuthenticated(true);
-      localStorage.setItem('the_editorial_admin_user', JSON.stringify(adminUser));
-      localStorage.setItem('the_editorial_admin_token', 'mock-session-token');
-      return true;
-    }
-    return false;
-  };
+        if (mounted) {
+          setSession(currentSession);
+          setUser(currentSession?.user ?? null);
 
-  const register = async (name: string, email: string, password: string): Promise<{ success: boolean; message?: string }> => {
-    await new Promise((resolve) => setTimeout(resolve, 600));
-
-    const admins = getRegisteredAdmins();
-    
-    // Check if email already exists
-    const emailExists = admins.some(
-      (acc) => acc.email.toLowerCase() === email.toLowerCase()
-    );
-
-    if (emailExists) {
-      return { success: false, message: 'An account with this email address already exists.' };
-    }
-
-    // Register new admin account
-    const newAdmin: AdminAccount = {
-      name,
-      email,
-      passwordHash: password,
-      createdAt: new Date().toISOString()
+          if (currentSession?.user) {
+            const userProfile = await fetchProfile(currentSession.user.id);
+            if (mounted) setProfile(userProfile);
+          }
+        }
+      } catch (err) {
+        console.error('[AuthContext.initializeAuth error]', err);
+      } finally {
+        if (mounted) setLoading(false);
+      }
     };
 
-    admins.push(newAdmin);
-    localStorage.setItem(LOCAL_STORAGE_ADMINS_KEY, JSON.stringify(admins));
+    initializeAuth();
 
-    return { success: true };
+    // 2. Listen to real-time Auth State Changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      async (_event, newSession) => {
+        if (!mounted) return;
+        setSession(newSession);
+        setUser(newSession?.user ?? null);
+
+        if (newSession?.user) {
+          const userProfile = await fetchProfile(newSession.user.id);
+          if (mounted) setProfile(userProfile);
+        } else {
+          setProfile(null);
+        }
+        setLoading(false);
+      }
+    );
+
+    return () => {
+      mounted = false;
+      subscription.unsubscribe();
+    };
+  }, []);
+
+  const login = async (email: string, password: string): Promise<{ success: boolean; error?: string }> => {
+    if (!email || !password) {
+      return { success: false, error: 'Please enter both email and password.' };
+    }
+
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: email.trim().toLowerCase(),
+        password,
+      });
+
+      if (error) {
+        // User-friendly error message
+        if (error.message.toLowerCase().includes('invalid login credentials') || error.message.toLowerCase().includes('invalid credentials')) {
+          return { success: false, error: 'Invalid email or password.' };
+        }
+        return { success: false, error: error.message };
+      }
+
+      if (data.user) {
+        const userProfile = await fetchProfile(data.user.id);
+        setProfile(userProfile);
+      }
+
+      return { success: true };
+    } catch (err: any) {
+      console.error('[AuthContext.login error]', err);
+      return { success: false, error: 'An unexpected error occurred during authentication.' };
+    }
   };
 
-  const logout = () => {
-    setUser(null);
-    setIsAuthenticated(false);
-    localStorage.removeItem('the_editorial_admin_user');
-    localStorage.removeItem('the_editorial_admin_token');
+  const logout = async () => {
+    try {
+      await supabase.auth.signOut();
+    } catch (err) {
+      console.error('[AuthContext.logout error]', err);
+    } finally {
+      setUser(null);
+      setProfile(null);
+      setSession(null);
+    }
   };
+
+  const resetPassword = async (email: string): Promise<{ success: boolean; error?: string }> => {
+    if (!email || !email.includes('@')) {
+      return { success: false, error: 'Please provide a valid email address.' };
+    }
+
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(email.trim().toLowerCase(), {
+        redirectTo: `${window.location.origin}/admin/reset-password`,
+      });
+
+      if (error) {
+        return { success: false, error: error.message };
+      }
+
+      return { success: true };
+    } catch (err: any) {
+      console.error('[AuthContext.resetPassword error]', err);
+      return { success: false, error: 'Failed to send password reset email.' };
+    }
+  };
+
+  const role = profile?.role || null;
+  const isAdmin = role === 'admin';
+  const isAuthenticated = Boolean(user);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, login, register, logout, loading }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        profile,
+        session,
+        role,
+        isAdmin,
+        isAuthenticated,
+        loading,
+        login,
+        logout,
+        resetPassword,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

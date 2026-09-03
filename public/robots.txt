@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Allow: /blog
+Allow: /blog/*
+Allow: /category/*
+Allow: /contact
+
+# Disallow indexing of administration and authenticated surfaces
+Disallow: /admin
+Disallow: /admin/*
+Disallow: /login
+
+Sitemap: https://theeditorial.com/sitemap.xml
