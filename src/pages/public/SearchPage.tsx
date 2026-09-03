@@ -67,8 +67,8 @@ export const SearchPage: React.FC = () => {
   return (
     <div className="space-y-12">
       <SEO 
-        title={queryParam ? `Search results for "${queryParam}" | SignalAI` : 'Search Articles | SignalAI'}
-        description="Search through essays, articles, critiques, and stories across SignalAI."
+        title={queryParam ? `Search results for "${queryParam}" | Neural Brief` : 'Search Articles | Neural Brief'}
+        description="Search through essays, articles, critiques, and stories across Neural Brief."
         slug="search"
         noIndex={true} // Search results pages should not pollute search engine indexes
       />
@@ -77,7 +77,7 @@ export const SearchPage: React.FC = () => {
       <header className="border-b border-outline-variant/30 dark:border-zinc-800/40 pb-8 space-y-6">
         <div>
           <h1 className="font-sans font-extrabold text-3xl md:text-5xl text-on-background dark:text-zinc-100 tracking-tight mb-2">
-            Search SignalAI
+            Search Neural Brief
           </h1>
           <p className="font-serif text-lg text-on-surface-variant dark:text-zinc-300">
             Find articles across architectural history, contemporary design, minimalism, and culture.

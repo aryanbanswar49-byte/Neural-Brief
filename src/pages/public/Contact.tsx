@@ -38,7 +38,7 @@ export const Contact: React.FC = () => {
   return (
     <div className="space-y-12">
       <SEO 
-        title="Contact SignalAI Desk | SignalAI"
+        title="Contact Neural Brief Desk | Neural Brief"
         description="Have an inquiry, feedback, or a story pitch? Reach out to our editorial desk."
         slug="contact"
       />

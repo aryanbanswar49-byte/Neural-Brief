@@ -1,6 +1,6 @@
-# SignalAI — High-Clarity Design & Technology Platform
+# Neural Brief — High-Clarity Design & Technology Platform
 
-**SignalAI** is a production-grade, editorial blogging platform and content management system (CMS) built with **React 18**, **TypeScript**, **Vite**, **Tailwind CSS**, and powered by **Supabase** (Authentication, PostgreSQL Database with Row Level Security, and Storage).
+**Neural Brief** is a production-grade, editorial blogging platform and content management system (CMS) built with **React 18**, **TypeScript**, **Vite**, **Tailwind CSS**, and powered by **Supabase** (Authentication, PostgreSQL Database with Row Level Security, and Storage).
 
 ---
 
@@ -39,11 +39,11 @@ This repository is organized into dedicated feature branches:
 
 | Branch | Description | Key Modules |
 |---|---|---|
-| **`main`** | **Production Release:** Complete integrated application with Supabase backend, CMS, SEO, and SignalAI branding. | Entire platform |
+| **`main`** | **Production Release:** Complete integrated application with Supabase backend, CMS, SEO, and Neural Brief branding. | Entire platform |
 | **`feature/supabase-backend`** | **Data & Auth Layer:** Supabase client, AuthContext, PostgreSQL schema, RLS policies, seed data, and API service. | `src/lib/supabase.ts`, `src/services/api.ts`, `src/context/AuthContext.tsx`, `supabase/` |
 | **`feature/admin-cms`** | **CMS & Management:** Admin dashboard, post authoring, category management, Supabase storage image uploader. | `src/pages/admin/`, `src/components/AdminLayout.tsx` |
 | **`feature/seo-and-accessibility`** | **SEO & Discoverability:** Dynamic Helmet metadata, Schema.org JSON-LD, sitemap, robots.txt, safe typography parser. | `src/components/SEO.tsx`, `src/components/SafeContent.tsx`, `public/` |
-| **`feature/branding-signal-ai`** | **Branding & Visuals:** SignalAI design system, Plus Jakarta Sans & Source Serif 4 typography, dark mode styling. | `src/components/PublicLayout.tsx`, `src/pages/public/`, `tailwind.config.js` |
+| **`feature/branding-neural-brief`** | **Branding & Visuals:** Neural Brief design system, Plus Jakarta Sans & Source Serif 4 typography, dark mode styling. | `src/components/PublicLayout.tsx`, `src/pages/public/`, `tailwind.config.js` |
 
 ---
 
@@ -108,4 +108,4 @@ npm run preview
 ---
 
 ## 📄 License
-MIT &copy; SignalAI. All rights reserved.
+MIT &copy; Neural Brief. All rights reserved.

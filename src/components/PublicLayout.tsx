@@ -45,7 +45,7 @@ export const PublicLayout: React.FC = () => {
             to="/" 
             className="font-sans font-extrabold text-2xl md:text-3xl text-on-background dark:text-zinc-100 tracking-tight focus:outline-none focus:ring-2 focus:ring-primary rounded"
           >
-            SignalAI
+            Neural Brief
           </Link>
           
           {/* Desktop navigation */}
@@ -226,10 +226,10 @@ export const PublicLayout: React.FC = () => {
         <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-3">
             <BookOpen className="text-primary" size={24} />
-            <span className="font-sans font-extrabold text-lg text-on-background dark:text-zinc-200 tracking-tight">SignalAI</span>
+            <span className="font-sans font-extrabold text-lg text-on-background dark:text-zinc-200 tracking-tight">Neural Brief</span>
           </div>
           <p className="text-xs text-on-surface-variant dark:text-zinc-400 font-sans text-center">
-            &copy; {new Date().getFullYear()} SignalAI. Crafted with clarity, structural honesty, and focus.
+            &copy; {new Date().getFullYear()} Neural Brief. Crafted with clarity, structural honesty, and focus.
           </p>
           <div className="flex items-center gap-4 text-xs font-semibold text-on-surface-variant dark:text-zinc-400">
             <Link to="/contact" className="hover:text-primary dark:hover:text-primary">Contact Desk</Link>

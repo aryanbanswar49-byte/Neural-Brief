@@ -48,7 +48,7 @@ export const Dashboard: React.FC = () => {
       <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="font-sans font-bold text-3xl text-on-background dark:text-zinc-100">
-            SignalAI CMS Dashboard
+            Neural Brief CMS Dashboard
           </h1>
           <p className="text-xs text-on-surface-variant dark:text-zinc-400 mt-1">
             Real-time content metrics, article publishing, and category management.

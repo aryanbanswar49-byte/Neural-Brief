@@ -34,7 +34,7 @@ export const AdminLayout: React.FC = () => {
   if (profile && profile.role !== 'admin' && profile.role !== 'author') {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-surface-container-low dark:bg-zinc-950 p-6 text-center">
-        <SEO title="Unauthorized Access | SignalAI" noIndex={true} />
+        <SEO title="Unauthorized Access | Neural Brief" noIndex={true} />
         <div className="bg-surface-container-lowest dark:bg-zinc-900 border border-outline-variant dark:border-zinc-800 rounded-xl p-8 max-w-md w-full shadow-lg space-y-4">
           <div className="w-12 h-12 rounded-full bg-error-container/20 text-error flex items-center justify-center mx-auto">
             <LogOut size={24} />
@@ -43,7 +43,7 @@ export const AdminLayout: React.FC = () => {
             Access Restricted
           </h2>
           <p className="font-serif text-sm text-on-surface-variant dark:text-zinc-400 leading-relaxed">
-            Your account ({user?.email}) does not have administrative privileges to access SignalAI CMS. Please contact your system administrator.
+            Your account ({user?.email}) does not have administrative privileges to access Neural Brief CMS. Please contact your system administrator.
           </p>
           <div className="pt-2 flex items-center justify-center gap-3">
             <button
@@ -69,7 +69,7 @@ export const AdminLayout: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-surface-container-low dark:bg-zinc-950 text-on-surface dark:text-zinc-50 transition-colors duration-200">
-      <SEO title="Editorial CMS | SignalAI" noIndex={true} />
+      <SEO title="Editorial CMS | Neural Brief" noIndex={true} />
 
       {/* Sidebar Navigation */}
       <aside 
@@ -78,7 +78,7 @@ export const AdminLayout: React.FC = () => {
       >
         <div className="p-6">
           <div className="flex items-center justify-between md:mb-8">
-            <span className="font-sans font-extrabold text-xl text-on-background dark:text-zinc-100 tracking-tight">SignalAI</span>
+            <span className="font-sans font-extrabold text-xl text-on-background dark:text-zinc-100 tracking-tight">Neural Brief</span>
             <span className="text-[10px] px-2 py-0.5 bg-primary/10 text-primary font-bold rounded-full uppercase">CMS</span>
           </div>
           

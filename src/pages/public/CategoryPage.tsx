@@ -45,7 +45,7 @@ export const CategoryPage: React.FC = () => {
   return (
     <div className="space-y-12">
       <SEO 
-        title={category ? `${category.name} | SignalAI` : 'Category | SignalAI'}
+        title={category ? `${category.name} | Neural Brief` : 'Category | Neural Brief'}
         description={category?.description || `Explore articles and essays categorized under ${category?.name || 'this topic'}.`}
         slug={slug ? `category/${slug}` : 'blog'}
       />

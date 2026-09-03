@@ -6,7 +6,7 @@ import { SEO } from '../../components/SEO';
 export const NotFound: React.FC = () => {
   return (
     <div className="min-h-[60vh] flex flex-col items-center justify-center text-center p-6 space-y-6">
-      <SEO title="Page Not Found | SignalAI" noIndex={true} />
+      <SEO title="Page Not Found | Neural Brief" noIndex={true} />
 
       <div className="w-16 h-16 rounded-full bg-surface-container dark:bg-zinc-800 flex items-center justify-center text-primary">
         <BookOpen size={28} />

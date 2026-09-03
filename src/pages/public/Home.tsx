@@ -82,7 +82,7 @@ export const Home: React.FC = () => {
   return (
     <div className="space-y-16">
       <SEO 
-        title="SignalAI | High-Clarity Design & Technology Journal"
+        title="Neural Brief | High-Clarity Design & Technology Journal"
         description="A curated digital publication exploring contemporary architecture, minimalist living spaces, culture, and interface design."
         slug=""
       />

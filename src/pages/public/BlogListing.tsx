@@ -77,7 +77,7 @@ export const BlogListing: React.FC = () => {
   return (
     <div className="space-y-12">
       <SEO 
-        title="All Articles | SignalAI"
+        title="All Articles | Neural Brief"
         description="Browse our complete archive of in-depth essays, architectural critiques, culture reflections, and design explorations."
         slug="blog"
       />

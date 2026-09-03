@@ -13,7 +13,7 @@ interface SEOProps extends SEOMetadata {
   noIndex?: boolean;
 }
 
-const DEFAULT_TITLE = 'SignalAI | High-Clarity Design & Technology Journal';
+const DEFAULT_TITLE = 'Neural Brief | High-Clarity Design & Technology Journal';
 const DEFAULT_DESCRIPTION = 'A curated digital publication exploring contemporary architecture, minimalist living spaces, culture, and interface design.';
 const DEFAULT_OG_IMAGE = 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&auto=format&fit=crop&q=80';
 const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://theeditorial.com').replace(/\/$/, '');
@@ -25,12 +25,12 @@ export const SEO: React.FC<SEOProps> = ({
   ogImage = DEFAULT_OG_IMAGE,
   ogType = 'website',
   publishedTime,
-  authorName = 'SignalAI Desk',
+  authorName = 'Neural Brief Desk',
   noIndex = false,
   structuredData,
 }) => {
   const fullTitle = title 
-    ? (title.includes('SignalAI') ? title : `${title} | SignalAI`)
+    ? (title.includes('Neural Brief') ? title : `${title} | Neural Brief`)
     : DEFAULT_TITLE;
     
   const canonicalUrl = slug ? `${SITE_URL}/${slug.replace(/^\//, '')}` : SITE_URL;
@@ -51,7 +51,7 @@ export const SEO: React.FC<SEOProps> = ({
           },
           'publisher': {
             '@type': 'Organization',
-            'name': 'SignalAI',
+            'name': 'Neural Brief',
             'logo': {
               '@type': 'ImageObject',
               'url': `${SITE_URL}/favicon.svg`,
@@ -65,7 +65,7 @@ export const SEO: React.FC<SEOProps> = ({
       : {
           '@context': 'https://schema.org',
           '@type': 'WebSite',
-          'name': 'SignalAI',
+          'name': 'Neural Brief',
           'url': SITE_URL,
           'description': DEFAULT_DESCRIPTION,
         }
@@ -86,7 +86,7 @@ export const SEO: React.FC<SEOProps> = ({
       )}
 
       {/* Open Graph Meta Tags */}
-      <meta property="og:site_name" content="SignalAI" />
+      <meta property="og:site_name" content="Neural Brief" />
       <meta property="og:type" content={ogType} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />

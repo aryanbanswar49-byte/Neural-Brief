@@ -631,7 +631,7 @@ export const PostManagement: React.FC = () => {
                   <input 
                     id="artMetaTitle"
                     type="text" 
-                    placeholder="e.g. Brutalism in Modern Architecture | SignalAI" 
+                    placeholder="e.g. Brutalism in Modern Architecture | Neural Brief" 
                     value={formMetaTitle}
                     onChange={(e) => setFormMetaTitle(e.target.value)}
                     className="w-full border border-outline-variant dark:border-zinc-800 rounded-lg p-2 bg-background dark:bg-zinc-950 text-on-background dark:text-zinc-100 font-sans text-xs"
