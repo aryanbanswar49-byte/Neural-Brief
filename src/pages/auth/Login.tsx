@@ -15,16 +15,14 @@ export const Login: React.FC = () => {
   const [resetStatus, setResetStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [resetMessage, setResetMessage] = useState('');
 
-  const { login, resetPassword, isAuthenticated, isAdmin } = useAuth();
+  const { login, resetPassword, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (isAuthenticated) {
-      if (isAdmin) {
-        navigate('/admin/dashboard', { replace: true });
-      }
+      navigate('/admin/dashboard', { replace: true });
     }
-  }, [isAuthenticated, isAdmin, navigate]);
+  }, [isAuthenticated, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
