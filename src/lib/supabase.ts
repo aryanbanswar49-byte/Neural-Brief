@@ -1,25 +1,27 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
-const supabasePublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+// Project Supabase Credentials
+const PROJECT_SUPABASE_URL = 'https://ttjcfgsxwyadwoqkypbr.supabase.co';
+const PROJECT_SUPABASE_KEY = 'sb_publishable_rq7W8oY21-4pJkqnqTLkZQ_tP3LQX9T';
 
-export const isSupabaseConfigured = Boolean(
-  supabaseUrl && 
-  supabasePublishableKey && 
-  !supabaseUrl.includes('placeholder') &&
-  !supabasePublishableKey.includes('placeholder')
-);
+// Resolve configuration from environment with live project fallbacks
+const supabaseUrl = (
+  import.meta.env.VITE_SUPABASE_URL || 
+  PROJECT_SUPABASE_URL
+).trim().replace(/\/+$/, '');
 
-if (!isSupabaseConfigured) {
-  console.warn(
-    '[Supabase Notice] VITE_SUPABASE_URL or VITE_SUPABASE_PUBLISHABLE_KEY is not configured in this environment. Please configure them in your hosting provider dashboard.'
-  );
-}
+const supabasePublishableKey = (
+  import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || 
+  import.meta.env.VITE_SUPABASE_ANON_KEY || 
+  PROJECT_SUPABASE_KEY
+).trim();
 
-// Initialize Supabase client safely with fallback strings if not yet set in production dashboard
+export const isSupabaseConfigured = Boolean(supabaseUrl && supabasePublishableKey);
+
+// Initialize Supabase Client
 export const supabase = createClient(
-  supabaseUrl || 'https://placeholder.supabase.co',
-  supabasePublishableKey || 'placeholder-anon-key',
+  supabaseUrl,
+  supabasePublishableKey,
   {
     auth: {
       persistSession: true,
