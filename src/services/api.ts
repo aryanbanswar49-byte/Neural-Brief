@@ -259,6 +259,14 @@ export const postsApi = {
   }
 };
 
+export const DEFAULT_CATEGORIES: Category[] = [
+  { id: 'c1111111-1111-1111-1111-111111111111', name: 'Architecture', slug: 'architecture', description: 'Stark forms, geometric lines, and structural aesthetics.', created_at: '2024-01-01T00:00:00Z', post_count: 0 },
+  { id: 'c2222222-2222-2222-2222-222222222222', name: 'Interior', slug: 'interior', description: 'Minimalist living spaces and functional design.', created_at: '2024-01-01T00:00:00Z', post_count: 0 },
+  { id: 'c3333333-3333-3333-3333-333333333333', name: 'Culture', slug: 'culture', description: 'Artisan crafts, social movements, and daily rituals.', created_at: '2024-01-01T00:00:00Z', post_count: 0 },
+  { id: 'c4444444-4444-4444-4444-444444444444', name: 'Technology', slug: 'technology', description: 'Human-centered digital design and interface aesthetics.', created_at: '2024-01-01T00:00:00Z', post_count: 0 },
+  { id: 'c5555555-5555-5555-5555-555555555555', name: 'Nature', slug: 'nature', description: 'Photographic essays and reflections on the wild.', created_at: '2024-01-01T00:00:00Z', post_count: 0 }
+];
+
 // ============================================================================
 // CATEGORIES API SERVICE (SUPABASE POSTGRESQL)
 // ============================================================================
@@ -270,9 +278,24 @@ export const categoriesApi = {
         .select('*, posts:posts(id, status)')
         .order('name', { ascending: true });
 
-      if (error) throw error;
+      if (error || !data || data.length === 0) {
+        // Attempt to self-seed categories table if empty
+        try {
+          await supabase.from('categories').upsert(
+            DEFAULT_CATEGORIES.map(c => ({
+              id: c.id,
+              name: c.name,
+              slug: c.slug,
+              description: c.description,
+            }))
+          );
+        } catch {
+          // Ignore if user lacks insert permissions
+        }
+        return DEFAULT_CATEGORIES;
+      }
 
-      return (data || []).map((cat: any) => ({
+      return data.map((cat: any) => ({
         id: cat.id,
         name: cat.name,
         slug: cat.slug,
@@ -282,7 +305,7 @@ export const categoriesApi = {
       }));
     } catch (err) {
       console.error('[categoriesApi.getCategories error]', err);
-      return [];
+      return DEFAULT_CATEGORIES;
     }
   },
 

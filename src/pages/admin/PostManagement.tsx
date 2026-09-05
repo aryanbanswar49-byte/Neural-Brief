@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { postsApi, categoriesApi, generateSlug } from '../../services/api';
+import { postsApi, categoriesApi, generateSlug, DEFAULT_CATEGORIES } from '../../services/api';
 import { Post, Category, PostStatus } from '../../types';
 import { 
   Plus, Edit2, Trash2, Search, X, Eye, FileText, Upload, 
@@ -111,13 +111,15 @@ export const PostManagement: React.FC = () => {
     setFilteredPosts(result);
   }, [posts, searchQuery, statusFilter, categoryFilter]);
 
+  const availableCategories = categories.length > 0 ? categories : DEFAULT_CATEGORIES;
+
   const handleOpenCreate = () => {
     setEditingPost(null);
     setFormTitle('');
     setFormSlug('');
     setFormExcerpt('');
     setFormContent('');
-    setFormCategory(categories.length > 0 ? categories[0].id : '');
+    setFormCategory(availableCategories.length > 0 ? availableCategories[0].id : '');
     setFormStatus('Draft');
     setFormImage('https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&auto=format&fit=crop&q=80');
     setFormMetaTitle('');
@@ -133,7 +135,7 @@ export const PostManagement: React.FC = () => {
     setFormSlug(post.slug);
     setFormExcerpt(post.excerpt);
     setFormContent(post.content);
-    setFormCategory(post.category_id || (categories.length > 0 ? categories[0].id : ''));
+    setFormCategory(post.category_id || (availableCategories.length > 0 ? availableCategories[0].id : ''));
     setFormStatus(post.status);
     setFormImage(post.featured_image);
     setFormMetaTitle(post.meta_title || '');
@@ -495,7 +497,7 @@ export const PostManagement: React.FC = () => {
                     onChange={(e) => setFormCategory(e.target.value)}
                     className="w-full border border-outline-variant dark:border-zinc-800 rounded-lg p-2.5 bg-background dark:bg-zinc-950 text-on-background dark:text-zinc-100 font-sans text-xs focus:border-primary-container"
                   >
-                    {categories.map(c => (
+                    {availableCategories.map(c => (
                       <option key={c.id} value={c.id}>{c.name}</option>
                     ))}
                   </select>
