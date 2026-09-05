@@ -162,6 +162,37 @@ export const postsApi = {
     
     // Get current authenticated user ID for author relation
     const { data: { user } } = await supabase.auth.getUser();
+    let authorId: string | null = null;
+
+    if (user) {
+      try {
+        const { data: existingProfile } = await supabase
+          .from('profiles')
+          .select('id')
+          .eq('id', user.id)
+          .maybeSingle();
+
+        if (existingProfile) {
+          authorId = user.id;
+        } else {
+          // Auto-upsert profile to satisfy foreign key constraint
+          const { error: upsertErr } = await supabase
+            .from('profiles')
+            .upsert({
+              id: user.id,
+              name: user.email?.split('@')[0] || 'Administrator',
+              email: user.email || '',
+              role: 'admin',
+            });
+          
+          if (!upsertErr) {
+            authorId = user.id;
+          }
+        }
+      } catch {
+        authorId = null;
+      }
+    }
 
     const insertPayload = {
       title: postInput.title || '',
@@ -170,7 +201,7 @@ export const postsApi = {
       content: postInput.content || '',
       featured_image: postInput.featured_image || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&auto=format&fit=crop&q=80',
       category_id: postInput.category_id || null,
-      author_id: user?.id || null,
+      author_id: authorId,
       status: postInput.status || 'Draft',
       reading_time,
       meta_title: postInput.meta_title || postInput.title || null,
