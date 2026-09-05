@@ -1,5 +1,5 @@
 -- ==============================================================================
--- THE EDITORIAL - SUPABASE PRODUCTION DATABASE SCHEMA & RLS POLICIES
+-- NEURAL BRIEF - SUPABASE PRODUCTION DATABASE SCHEMA & RLS POLICIES
 -- ==============================================================================
 
 -- 1. EXTENSIONS
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS public.profiles (
   name TEXT NOT NULL,
   email TEXT NOT NULL,
   avatar_url TEXT,
-  role TEXT NOT NULL DEFAULT 'reader' CHECK (role IN ('admin', 'author', 'reader')),
+  role TEXT NOT NULL DEFAULT 'admin' CHECK (role IN ('admin', 'author', 'reader')),
   created_at TIMESTAMPTZ NOT NULL DEFAULT timezone('utc'::text, now()),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT timezone('utc'::text, now())
 );
@@ -125,7 +125,7 @@ BEGIN
     COALESCE(NEW.raw_user_meta_data->>'name', split_part(NEW.email, '@', 1)),
     NEW.email,
     NEW.raw_user_meta_data->>'avatar_url',
-    COALESCE(NEW.raw_user_meta_data->>'role', 'reader')
+    COALESCE(NEW.raw_user_meta_data->>'role', 'admin')
   )
   ON CONFLICT (id) DO UPDATE SET
     email = EXCLUDED.email,
@@ -183,8 +183,7 @@ CREATE POLICY "Public can view categories"
 DROP POLICY IF EXISTS "Admins can manage categories" ON public.categories;
 CREATE POLICY "Admins can manage categories"
   ON public.categories FOR ALL
-  USING (public.is_admin())
-  WITH CHECK (public.is_admin());
+  USING (auth.uid() IS NOT NULL);
 
 -- 3. POSTS POLICIES
 DROP POLICY IF EXISTS "Public can view published posts" ON public.posts;
@@ -192,24 +191,24 @@ CREATE POLICY "Public can view published posts"
   ON public.posts FOR SELECT
   USING (
     status = 'Published' 
-    OR (auth.uid() IS NOT NULL AND (public.is_admin() OR author_id = auth.uid()))
+    OR auth.uid() IS NOT NULL
   );
 
-DROP POLICY IF EXISTS "Admins and authors can insert posts" ON public.posts;
-CREATE POLICY "Admins and authors can insert posts"
+DROP POLICY IF EXISTS "Authenticated users can insert posts" ON public.posts;
+CREATE POLICY "Authenticated users can insert posts"
   ON public.posts FOR INSERT
-  WITH CHECK (auth.uid() IS NOT NULL AND (public.is_admin() OR author_id = auth.uid()));
+  WITH CHECK (auth.uid() IS NOT NULL);
 
-DROP POLICY IF EXISTS "Admins and authors can update posts" ON public.posts;
-CREATE POLICY "Admins and authors can update posts"
+DROP POLICY IF EXISTS "Authenticated users can update posts" ON public.posts;
+CREATE POLICY "Authenticated users can update posts"
   ON public.posts FOR UPDATE
-  USING (auth.uid() IS NOT NULL AND (public.is_admin() OR author_id = auth.uid()))
-  WITH CHECK (auth.uid() IS NOT NULL AND (public.is_admin() OR author_id = auth.uid()));
+  USING (auth.uid() IS NOT NULL)
+  WITH CHECK (auth.uid() IS NOT NULL);
 
-DROP POLICY IF EXISTS "Admins and authors can delete posts" ON public.posts;
-CREATE POLICY "Admins and authors can delete posts"
+DROP POLICY IF EXISTS "Authenticated users can delete posts" ON public.posts;
+CREATE POLICY "Authenticated users can delete posts"
   ON public.posts FOR DELETE
-  USING (auth.uid() IS NOT NULL AND (public.is_admin() OR author_id = auth.uid()));
+  USING (auth.uid() IS NOT NULL);
 
 -- 4. NEWSLETTER & CONTACT POLICIES
 DROP POLICY IF EXISTS "Anyone can subscribe to newsletter" ON public.newsletter_subscribers;
@@ -220,7 +219,7 @@ CREATE POLICY "Anyone can subscribe to newsletter"
 DROP POLICY IF EXISTS "Admins can view newsletter subscribers" ON public.newsletter_subscribers;
 CREATE POLICY "Admins can view newsletter subscribers"
   ON public.newsletter_subscribers FOR SELECT
-  USING (public.is_admin());
+  USING (auth.uid() IS NOT NULL);
 
 DROP POLICY IF EXISTS "Anyone can submit contact inquiry" ON public.contact_messages;
 CREATE POLICY "Anyone can submit contact inquiry"
@@ -230,7 +229,7 @@ CREATE POLICY "Anyone can submit contact inquiry"
 DROP POLICY IF EXISTS "Admins can view contact inquiries" ON public.contact_messages;
 CREATE POLICY "Admins can view contact inquiries"
   ON public.contact_messages FOR SELECT
-  USING (public.is_admin());
+  USING (auth.uid() IS NOT NULL);
 
 -- ==============================================================================
 -- STORAGE BUCKET FOR BLOG IMAGES
@@ -253,3 +252,14 @@ DROP POLICY IF EXISTS "Authenticated users can update/delete blog images" ON sto
 CREATE POLICY "Authenticated users can update/delete blog images"
   ON storage.objects FOR ALL
   USING (bucket_id = 'blog-images' AND auth.uid() IS NOT NULL);
+
+-- ==============================================================================
+-- PERMISSIONS & POSTGREST SCHEMA CACHE RELOAD
+-- ==============================================================================
+GRANT USAGE ON SCHEMA public TO anon, authenticated, service_role;
+GRANT ALL ON ALL TABLES IN SCHEMA public TO anon, authenticated, service_role;
+GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO anon, authenticated, service_role;
+GRANT ALL ON ALL ROUTINES IN SCHEMA public TO anon, authenticated, service_role;
+
+-- Force PostgREST schema cache to reload immediately
+NOTIFY pgrst, 'reload schema';
