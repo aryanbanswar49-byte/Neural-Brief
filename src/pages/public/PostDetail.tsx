@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { postsApi } from '../../services/api';
 import { Post } from '../../types';
-import { Calendar, User, ArrowLeft, Tag, Clock } from 'lucide-react';
+import { Calendar, User, ArrowLeft, Tag, Clock, Check, Copy, Twitter, Linkedin } from 'lucide-react';
 import { SEO } from '../../components/SEO';
 import { SafeContent } from '../../components/SafeContent';
 import { useAuth } from '../../context/AuthContext';
@@ -14,6 +14,7 @@ export const PostDetail: React.FC = () => {
   const [relatedPosts, setRelatedPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     let mounted = true;
@@ -79,9 +80,27 @@ export const PostDetail: React.FC = () => {
     });
   };
 
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 3000);
+  };
+
+  const handleShareTwitter = () => {
+    if (!post) return;
+    const text = encodeURIComponent(`${post.title} — Neural Brief\n`);
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleShareLinkedIn = () => {
+    const url = encodeURIComponent(window.location.href);
+    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'noopener,noreferrer');
+  };
+
   if (loading) {
     return (
-      <div className="max-w-[800px] mx-auto space-y-8 animate-pulse py-8">
+      <div className="max-w-3xl mx-auto space-y-8 animate-pulse py-8">
         <div className="h-4 bg-surface-container dark:bg-zinc-800 w-32 rounded" />
         <div className="h-12 bg-surface-container dark:bg-zinc-800 w-full rounded" />
         <div className="h-4 bg-surface-container dark:bg-zinc-800 w-64 rounded" />
@@ -119,7 +138,7 @@ export const PostDetail: React.FC = () => {
   const isDraft = post.status === 'Draft';
 
   return (
-    <article className="space-y-12">
+    <article className="space-y-12 pb-16">
       <SEO 
         title={post.meta_title || post.title}
         description={post.meta_description || post.excerpt}
@@ -131,7 +150,7 @@ export const PostDetail: React.FC = () => {
         noIndex={isDraft}
       />
 
-      {/* Scroll Progress Bar */}
+      {/* Scroll Reading Progress Bar */}
       <div 
         role="progressbar"
         aria-valuemin={0}
@@ -143,17 +162,17 @@ export const PostDetail: React.FC = () => {
 
       {/* Draft Preview Warning Banner */}
       {isDraft && (
-        <div className="max-w-[700px] mx-auto p-4 bg-amber-500/10 border border-amber-500/30 rounded-lg text-amber-800 dark:text-amber-300 text-xs font-sans font-semibold flex items-center justify-between">
+        <div className="max-w-3xl mx-auto p-4 bg-amber-500/10 border border-amber-500/30 rounded-lg text-amber-800 dark:text-amber-300 text-xs font-sans font-semibold flex items-center justify-between">
           <span>⚠️ You are previewing an unindexed Draft article. Only administrators can view this page.</span>
           <Link to="/admin/posts" className="underline hover:text-amber-900">Edit in CMS</Link>
         </div>
       )}
 
-      {/* Back button & Category */}
-      <header className="max-w-[700px] mx-auto space-y-6">
+      {/* Header & Meta */}
+      <header className="max-w-3xl mx-auto space-y-6">
         <Link 
           to="/blog" 
-          className="inline-flex items-center gap-2 text-sm font-semibold text-on-surface-variant dark:text-zinc-400 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-on-surface-variant dark:text-zinc-400 hover:text-primary dark:hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary rounded p-1"
         >
           <ArrowLeft size={16} />
           <span>Back to all articles</span>
@@ -174,28 +193,68 @@ export const PostDetail: React.FC = () => {
             {post.title}
           </h1>
 
-          {/* Author/Date Info */}
-          <div className="flex flex-wrap items-center gap-4 text-xs text-on-surface-variant dark:text-zinc-400 font-sans border-y border-outline-variant/30 dark:border-zinc-800/40 py-4">
-            <div className="flex items-center gap-1.5">
-              <User size={14} />
-              <span>By {post.author?.name || 'Elena Rostova'}</span>
+          {/* Author / Date / Share Row */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-on-surface-variant dark:text-zinc-400 font-sans border-y border-outline-variant/30 dark:border-zinc-800/40 py-4">
+            <div className="flex flex-wrap items-center gap-4">
+              <div className="flex items-center gap-1.5">
+                <User size={14} />
+                <span className="font-semibold text-on-background dark:text-zinc-200">By {post.author?.name || 'Elena Rostova'}</span>
+              </div>
+              <span className="hidden sm:inline text-outline">&bull;</span>
+              <div className="flex items-center gap-1.5">
+                <Calendar size={14} />
+                <time dateTime={post.published_at || post.created_at}>{formatDate(post.published_at || post.created_at)}</time>
+              </div>
+              <span className="hidden sm:inline text-outline">&bull;</span>
+              <div className="flex items-center gap-1.5">
+                <Clock size={14} />
+                <span>{post.reading_time} min read</span>
+              </div>
             </div>
-            <span className="hidden sm:inline text-outline">&bull;</span>
-            <div className="flex items-center gap-1.5">
-              <Calendar size={14} />
-              <time dateTime={post.published_at || post.created_at}>{formatDate(post.published_at || post.created_at)}</time>
-            </div>
-            <span className="hidden sm:inline text-outline">&bull;</span>
-            <div className="flex items-center gap-1.5">
-              <Clock size={14} />
-              <span>{post.reading_time} min read</span>
+
+            {/* Social Share Buttons */}
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                onClick={handleShareTwitter}
+                className="p-1.5 rounded-md hover:bg-surface-container dark:hover:bg-zinc-800 text-on-surface-variant dark:text-zinc-400 hover:text-primary transition-colors"
+                title="Share on X (Twitter)"
+                aria-label="Share on X"
+              >
+                <Twitter size={15} />
+              </button>
+              <button
+                onClick={handleShareLinkedIn}
+                className="p-1.5 rounded-md hover:bg-surface-container dark:hover:bg-zinc-800 text-on-surface-variant dark:text-zinc-400 hover:text-primary transition-colors"
+                title="Share on LinkedIn"
+                aria-label="Share on LinkedIn"
+              >
+                <Linkedin size={15} />
+              </button>
+              <button
+                onClick={handleCopyLink}
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-surface-container dark:bg-zinc-800 hover:bg-surface-container-high dark:hover:bg-zinc-700 text-on-surface-variant dark:text-zinc-300 transition-colors font-sans text-xs font-semibold"
+                title="Copy article link"
+                aria-label="Copy article link"
+              >
+                {copied ? (
+                  <>
+                    <Check size={13} className="text-primary dark:text-primary-container" />
+                    <span className="text-primary dark:text-primary-container">Copied</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy size={13} />
+                    <span>Copy Link</span>
+                  </>
+                )}
+              </button>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Featured Image */}
-      <div className="max-w-[1000px] mx-auto overflow-hidden rounded-xl border border-outline-variant/30 dark:border-zinc-800/30 bg-surface-container dark:bg-zinc-950 aspect-[16/9]">
+      {/* Featured Cover Image */}
+      <div className="max-w-4xl mx-auto overflow-hidden rounded-xl border border-outline-variant/30 dark:border-zinc-800/30 bg-surface-container dark:bg-zinc-950 aspect-[16/9]">
         <img 
           src={post.featured_image} 
           alt={post.title} 
@@ -205,13 +264,35 @@ export const PostDetail: React.FC = () => {
       </div>
 
       {/* Article Body Content */}
-      <div className="max-w-[700px] mx-auto">
+      <div className="max-w-3xl mx-auto">
         <SafeContent content={post.content} />
+      </div>
+
+      {/* Author Bio Card */}
+      <div className="max-w-3xl mx-auto mt-12 p-6 rounded-xl bg-surface-container-low/40 dark:bg-zinc-900/60 border border-outline-variant/30 dark:border-zinc-800/50 flex flex-col sm:flex-row items-center sm:items-start gap-4">
+        <div className="w-16 h-16 rounded-full overflow-hidden bg-surface-container dark:bg-zinc-800 shrink-0 border border-outline-variant dark:border-zinc-700">
+          <img 
+            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&auto=format&fit=crop&q=80" 
+            alt={post.author?.name || 'Elena Rostova'}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="space-y-1 text-center sm:text-left">
+          <div className="font-sans font-bold text-base text-on-background dark:text-zinc-100">
+            {post.author?.name || 'Elena Rostova'}
+          </div>
+          <div className="text-xs text-primary font-semibold font-sans">
+            Lead Editor &amp; Architectural Critic
+          </div>
+          <p className="font-serif text-sm text-on-surface-variant dark:text-zinc-300 leading-relaxed pt-1">
+            Writing at the intersection of architectural theory, structural minimalism, and modern cultural critique.
+          </p>
+        </div>
       </div>
 
       {/* Related Posts */}
       {relatedPosts.length > 0 && (
-        <section aria-label="Related Articles" className="max-w-[900px] mx-auto border-t border-outline-variant/45 dark:border-zinc-800/60 pt-12 space-y-6">
+        <section aria-label="Related Articles" className="max-w-4xl mx-auto border-t border-outline-variant/45 dark:border-zinc-800/60 pt-12 space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="font-sans font-bold text-xl text-on-background dark:text-zinc-100">
               Related Articles

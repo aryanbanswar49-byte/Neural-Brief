@@ -9,6 +9,7 @@ interface AuthContextType {
   session: Session | null;
   role: UserRole | null;
   isAdmin: boolean;
+  isAuthor: boolean;
   isAuthenticated: boolean;
   loading: boolean;
   login: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
@@ -197,6 +198,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const role = profile?.role || null;
   const isAdmin = role === 'admin';
+  const isAuthor = role === 'admin' || role === 'author';
   const isAuthenticated = Boolean(user);
 
   return (
@@ -207,6 +209,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         session,
         role,
         isAdmin,
+        isAuthor,
         isAuthenticated,
         loading,
         login,

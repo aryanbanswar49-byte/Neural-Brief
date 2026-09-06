@@ -92,10 +92,12 @@ export const BlogListing: React.FC = () => {
         </p>
 
         {/* Category Filter Pills */}
-        <div className="flex items-center gap-2 mt-6 overflow-x-auto pb-2 scrollbar-none">
+        <div className="flex items-center gap-2 mt-6 overflow-x-auto pb-2 scrollbar-none" role="tablist" aria-label="Article categories">
           <button
+            role="tab"
+            aria-selected={selectedCategorySlug === 'all'}
             onClick={() => handleCategorySelect('all')}
-            className={`px-4 py-2 rounded-full font-sans text-xs font-semibold whitespace-nowrap transition-all ${
+            className={`px-4 py-2 rounded-full font-sans text-xs font-semibold whitespace-nowrap transition-all focus:outline-none focus:ring-2 focus:ring-primary ${
               selectedCategorySlug === 'all'
                 ? 'bg-primary-container text-white shadow-sm'
                 : 'bg-surface-container dark:bg-zinc-800 text-on-surface-variant dark:text-zinc-400 hover:text-primary dark:hover:text-primary-container'
@@ -106,8 +108,10 @@ export const BlogListing: React.FC = () => {
           {categories.map(cat => (
             <button
               key={cat.id}
+              role="tab"
+              aria-selected={selectedCategorySlug === cat.slug}
               onClick={() => handleCategorySelect(cat.slug)}
-              className={`px-4 py-2 rounded-full font-sans text-xs font-semibold whitespace-nowrap transition-all ${
+              className={`px-4 py-2 rounded-full font-sans text-xs font-semibold whitespace-nowrap transition-all focus:outline-none focus:ring-2 focus:ring-primary ${
                 selectedCategorySlug === cat.slug
                   ? 'bg-primary-container text-white shadow-sm'
                   : 'bg-surface-container dark:bg-zinc-800 text-on-surface-variant dark:text-zinc-400 hover:text-primary dark:hover:text-primary-container'
