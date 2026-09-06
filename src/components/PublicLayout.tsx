@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { 
   Menu, X, Search, BookOpen, Sun, Moon, 
-  ShieldCheck, LogOut, ChevronDown 
+  ShieldCheck, LogOut, ChevronDown, Lock 
 } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { useAuth } from '../context/AuthContext';
@@ -439,19 +439,29 @@ export const PublicLayout: React.FC = () => {
             &copy; {new Date().getFullYear()} Neural Brief. A high-clarity publication for design, culture, and technology.
           </p>
 
-          <div className="flex items-center gap-4 text-xs font-semibold text-on-surface-variant dark:text-zinc-400">
+          <div className="flex flex-wrap items-center justify-center md:justify-end gap-4 text-xs font-semibold text-on-surface-variant dark:text-zinc-400">
             <Link to="/" className="hover:text-primary dark:hover:text-primary transition-colors">Home</Link>
             <span>&bull;</span>
             <Link to="/blog" className="hover:text-primary dark:hover:text-primary transition-colors">Archive</Link>
             <span>&bull;</span>
             <Link to="/contact" className="hover:text-primary dark:hover:text-primary transition-colors">Contact</Link>
-            {isAdmin && (
-              <>
-                <span>&bull;</span>
-                <Link to="/admin/dashboard" className="text-primary hover:underline font-bold">
-                  CMS
+            <span>&bull;</span>
+            {isAuthenticated ? (
+              isAdmin ? (
+                <Link to="/admin/dashboard" className="text-primary hover:underline font-bold flex items-center gap-1">
+                  <ShieldCheck size={13} />
+                  <span>CMS Dashboard</span>
                 </Link>
-              </>
+              ) : null
+            ) : (
+              <Link 
+                to="/login" 
+                className="hover:text-primary dark:hover:text-primary transition-colors opacity-75 hover:opacity-100 flex items-center gap-1 text-[11px]" 
+                title="Editorial Staff Sign In"
+              >
+                <Lock size={12} />
+                <span>Staff Sign In</span>
+              </Link>
             )}
           </div>
         </div>
