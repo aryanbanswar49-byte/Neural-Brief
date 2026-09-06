@@ -16,7 +16,7 @@ interface SEOProps extends SEOMetadata {
 const DEFAULT_TITLE = 'Neural Brief | High-Clarity Design & Technology Journal';
 const DEFAULT_DESCRIPTION = 'A curated digital publication exploring contemporary architecture, minimalist living spaces, culture, and interface design.';
 const DEFAULT_OG_IMAGE = 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&auto=format&fit=crop&q=80';
-const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://theeditorial.com').replace(/\/$/, '');
+const SITE_URL = (import.meta.env.VITE_SITE_URL || (typeof window !== 'undefined' ? window.location.origin : 'https://neural-brief-three.vercel.app')).replace(/\/$/, '');
 
 export const SEO: React.FC<SEOProps> = ({
   title,
